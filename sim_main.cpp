@@ -101,26 +101,6 @@ int main(int argc, char **argv, char **env)
 				printf("D1_OP:   %04x   ", d1bus_op);
 				
 				// Control signals...
-				if (top->D0_TO_CT0)  printf("D0_TO_CT0, ");
-				if (top->D0_TO_CT1)  printf("D0_TO_CT1, ");
-				if (top->D0_TO_CT2)  printf("D0_TO_CT2, ");
-				if (top->D0_TO_CT3)  printf("D0_TO_CT3, ");
-
-				if (top->D1_TO_CT0)  printf("D1_TO_CT0, ");
-				if (top->D1_TO_CT1)  printf("D1_TO_CT1, ");
-				if (top->D1_TO_CT2)  printf("D1_TO_CT2, ");
-				if (top->D1_TO_CT3)  printf("D1_TO_CT3, ");
-
-				if (top->LOAD_CT0)   printf("LOAD_CT0,  ");
-				if (top->LOAD_CT1)   printf("LOAD_CT1,  ");
-				if (top->LOAD_CT2)   printf("LOAD_CT2,  ");
-				if (top->LOAD_CT3)   printf("LOAD_CT3,  ");
-
-				if (top->INC_CT0)    printf("INC_CT0,   ");
-				if (top->INC_CT1)    printf("INC_CT1,   ");
-				if (top->INC_CT2)    printf("INC_CT2,   ");
-				if (top->INC_CT3)    printf("INC_CT3,   ");
-
 				if (top->MD0_TO_X)   printf("MD0_TO_X,  ");
 				if (top->MD1_TO_X)   printf("MD1_TO_X,  ");
 				if (top->MD2_TO_X)   printf("MD2_TO_X,  ");
@@ -143,11 +123,6 @@ int main(int argc, char **argv, char **env)
 
 				if (top->ACH_TO_D1)  printf("ACH_TO_D1, ");
 				if (top->ACL_TO_D1)  printf("ACL_TO_D1, ");
-
-				if (top->LOAD_MD0)   printf("LOAD_MD0, ");
-				if (top->LOAD_MD1)   printf("LOAD_MD1, ");
-				if (top->LOAD_MD2)   printf("LOAD_MD2, ");
-				if (top->LOAD_MD3)   printf("LOAD_MD3, ");
 
 				if (top->X_TO_RX)    printf("X_TO_RX, ");
 				if (top->D1_TO_RX)   printf("D1_TO_RX, ");
@@ -178,12 +153,23 @@ int main(int argc, char **argv, char **env)
 
 				if (top->PC_TO_D0)   printf("PC_TO_D0, ");
 
-				if (top->LOAD_RA)    printf("LOAD_RA,  ");
 				if (top->RA_TO_RAMS) printf("RA_TO_RAMS, ");
 
 				if (top->SHIFT_L16_TO_D1) printf("SHFT_L16_TO_D1,");
 
 				if (top->CLR_A)      printf("CLR_A, ");
+
+				if (top->LOAD_CT0)   printf("LOAD_CT0,  ");
+				if (top->LOAD_CT1)   printf("LOAD_CT1,  ");
+				if (top->LOAD_CT2)   printf("LOAD_CT2,  ");
+				if (top->LOAD_CT3)   printf("LOAD_CT3,  ");
+				
+				if (top->LOAD_MD0)   printf("LOAD_MD0, ");
+				if (top->LOAD_MD1)   printf("LOAD_MD1, ");
+				if (top->LOAD_MD2)   printf("LOAD_MD2, ");
+				if (top->LOAD_MD3)   printf("LOAD_MD3, ");
+				
+				if (top->LOAD_RA)    printf("LOAD_RA,  ");
 
 				if (top->LOAD_RA0)   printf("LOAD_RA0, ");
 				if (top->LOAD_WA0)   printf("LOAD_WA0, ");
@@ -193,6 +179,11 @@ int main(int argc, char **argv, char **env)
 
 				if (top->LOAD_PROG_RAM) printf("LOAD_PROG_RAM, ");
 
+				if (top->INC_CT0)    printf("INC_CT0,   ");
+				if (top->INC_CT1)    printf("INC_CT1,   ");
+				if (top->INC_CT2)    printf("INC_CT2,   ");
+				if (top->INC_CT3)    printf("INC_CT3,   ");
+				
 				printf("\n");
 
 				printf("P_REG: %012x  ", top->P_REG);
@@ -393,7 +384,15 @@ int main(int argc, char **argv, char **env)
 				else printf("LPS    ");
 				printf("\n");
 			}
+			
+			printf("\n");
 
+			printf("D1BUS: %08x      ", top->D1_BUS);
+			printf("CT0: %02x  ", top->CT0);
+			printf("CT1: %02x  ", top->CT1);
+			printf("CT2: %02x  ", top->CT2);
+			printf("CT3: %02x  ", top->CT3);			
+						
 			printf("\n\n");
 		
 					

@@ -22,14 +22,6 @@ VL_MODULE(Vsaturn_dsp) {
     // propagate new values into/out from the Verilated model.
     // Begin mtask footprint  all: 
     VL_IN8(CLOCK,0,0);
-    VL_OUT8(D0_TO_CT0,0,0);
-    VL_OUT8(D0_TO_CT1,0,0);
-    VL_OUT8(D0_TO_CT2,0,0);
-    VL_OUT8(D0_TO_CT3,0,0);
-    VL_OUT8(D1_TO_CT0,0,0);
-    VL_OUT8(D1_TO_CT1,0,0);
-    VL_OUT8(D1_TO_CT2,0,0);
-    VL_OUT8(D1_TO_CT3,0,0);
     VL_OUT8(LOAD_CT0,0,0);
     VL_OUT8(LOAD_CT1,0,0);
     VL_OUT8(LOAD_CT2,0,0);
@@ -88,10 +80,15 @@ VL_MODULE(Vsaturn_dsp) {
     VL_OUT8(LOAD_LOP,0,0);
     VL_OUT8(LOAD_TOP,0,0);
     VL_OUT8(LOAD_PROG_RAM,0,0);
+    VL_OUT8(CT0,5,0);
+    VL_OUT8(CT1,5,0);
+    VL_OUT8(CT2,5,0);
+    VL_OUT8(CT3,5,0);
     VL_OUT8(INST_ADDR,7,0);
-    VL_IN(BUS_DI,31,0);
-    VL_OUT(BUS_DO,31,0);
+    VL_IN(D0_BUS_IN,31,0);
+    VL_OUT(D0_BUS_OUT,31,0);
     VL_OUT(FETCH,31,0);
+    VL_OUT(D1_BUS,31,0);
     VL_IN(INST_IN,31,0);
     VL_OUT64(P_REG,47,0);
     VL_OUT64(A_REG,47,0);
@@ -101,7 +98,15 @@ VL_MODULE(Vsaturn_dsp) {
     // Begin mtask footprint  all: 
     VL_SIG(saturn_dsp__DOT__RX,31,0);
     VL_SIG(saturn_dsp__DOT__RY,31,0);
+    VL_SIG(saturn_dsp__DOT__MD0_DI,31,0);
+    VL_SIG(saturn_dsp__DOT__MD1_DI,31,0);
+    VL_SIG(saturn_dsp__DOT__MD2_DI,31,0);
+    VL_SIG(saturn_dsp__DOT__MD3_DI,31,0);
     VL_SIG64(saturn_dsp__DOT__alu_inst__DOT__INT_RES,49,0);
+    VL_SIG(saturn_dsp__DOT__data_ram_md0__DOT__RAM[64],31,0);
+    VL_SIG(saturn_dsp__DOT__data_ram_md1__DOT__RAM[64],31,0);
+    VL_SIG(saturn_dsp__DOT__data_ram_md2__DOT__RAM[64],31,0);
+    VL_SIG(saturn_dsp__DOT__data_ram_md3__DOT__RAM[64],31,0);
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
@@ -149,6 +154,7 @@ VL_MODULE(Vsaturn_dsp) {
   public:
     static void _eval_initial(Vsaturn_dsp__Syms* __restrict vlSymsp);
     static void _eval_settle(Vsaturn_dsp__Syms* __restrict vlSymsp);
+    static void _initial__TOP__3(Vsaturn_dsp__Syms* __restrict vlSymsp);
     static void _sequent__TOP__2(Vsaturn_dsp__Syms* __restrict vlSymsp);
     static void _settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp);
 } VL_ATTR_ALIGNED(128);

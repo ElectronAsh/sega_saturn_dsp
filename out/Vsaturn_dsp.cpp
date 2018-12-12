@@ -93,45 +93,180 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_settle__TOP__1\n"); );
     Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_CT1 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_CT0 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D0_TO_CT3 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D0_TO_CT2 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D0_TO_CT0 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D0_TO_CT1 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_CT2 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_CT3 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->PC_TO_TOP = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->D1_TO_TOP = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->PC_TO_TOP = 0U;
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->P_TO_PL = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->IMM_TO_LOP = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->D1_TO_LOP = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->PC_TO_D0 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_RA = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->RA_TO_RAMS = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->SHIFT_L16_TO_D1 = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_PROG_RAM = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->CLR_A = 0U;
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_RY = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		vlTOPp->LOAD_RY = 1U;
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_RX = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		vlTOPp->LOAD_RX = 1U;
+	    }
+	}
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_RX = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_RX = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_RX = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_RX = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_RX = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->X_TO_RX = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		vlTOPp->X_TO_RX = 1U;
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_MD3 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->LOAD_MD3 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->LOAD_MD3 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_MD2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_MD2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_MD2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_MD1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -163,7 +298,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_MD0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -197,7 +332,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->ACL_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -227,7 +362,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->ACH_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -260,382 +395,27 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD3 = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->INC_CT1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD3 = 1U;
-				}
-			    }
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
+		    if ((0x100000U & vlTOPp->FETCH)) {
+			if ((0x400000U & vlTOPp->FETCH)) {
+			    vlTOPp->INC_CT1 = 1U;
 			}
 		    }
 		}
 	    }
 	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD1 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD1 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD0 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD0 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD0 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD3_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U == (0xfU 
-						& vlTOPp->FETCH))) {
-					vlTOPp->MD3_TO_D1 = 1U;
-				    } else {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 != 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						if (
-						    (6U 
-						     != 
-						     (0xfU 
-						      & vlTOPp->FETCH))) {
-						    vlTOPp->MD3_TO_D1 = 1U;
-						}
-					    }
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD2_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U == (0xfU & vlTOPp->FETCH))) {
-				    vlTOPp->MD2_TO_D1 = 1U;
-				} else {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 != 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						if (
-						    (6U 
-						     == 
-						     (0xfU 
-						      & vlTOPp->FETCH))) {
-						    vlTOPp->MD2_TO_D1 = 1U;
-						}
-					    }
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD1_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U == (0xfU & vlTOPp->FETCH))) {
-				vlTOPp->MD1_TO_D1 = 1U;
-			    } else {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 == 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						vlTOPp->MD1_TO_D1 = 1U;
-					    }
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD0_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U == (0xfU & vlTOPp->FETCH))) {
-			    vlTOPp->MD0_TO_D1 = 1U;
-			} else {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U == 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    vlTOPp->MD0_TO_D1 = 1U;
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD3_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((0x8000U & vlTOPp->FETCH)) {
-		    if ((0x4000U & vlTOPp->FETCH)) {
-			vlTOPp->MD3_TO_Y = 1U;
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U != (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				if ((1U != (0xfffU 
-					    & (vlTOPp->FETCH 
-					       >> 4U)))) {
-				    if ((2U != (0xfffU 
-						& (vlTOPp->FETCH 
-						   >> 4U)))) {
-					if ((3U == 
-					     (0xfffU 
-					      & (vlTOPp->FETCH 
-						 >> 4U)))) {
-					    vlTOPp->MD3_TO_Y = 1U;
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD2_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((0x8000U & vlTOPp->FETCH)) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
-			vlTOPp->MD2_TO_Y = 1U;
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U != (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				if ((1U != (0xfffU 
-					    & (vlTOPp->FETCH 
-					       >> 4U)))) {
-				    if ((2U == (0xfffU 
-						& (vlTOPp->FETCH 
-						   >> 4U)))) {
-					vlTOPp->MD2_TO_Y = 1U;
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD1_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
 		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
 		    if ((0x4000U & vlTOPp->FETCH)) {
-			vlTOPp->MD1_TO_Y = 1U;
+			if ((0x10000U & vlTOPp->FETCH)) {
+			    vlTOPp->INC_CT1 = 1U;
+			}
 		    }
 		}
 	    } else {
@@ -649,7 +429,9 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 				if ((1U == (0xfffU 
 					    & (vlTOPp->FETCH 
 					       >> 4U)))) {
-				    vlTOPp->MD1_TO_Y = 1U;
+				    if ((0x10000U & vlTOPp->FETCH)) {
+					vlTOPp->INC_CT1 = 1U;
+				    }
 				}
 			    }
 			}
@@ -657,206 +439,55 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 		}
 	    }
 	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD0_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
-			vlTOPp->MD0_TO_Y = 1U;
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U == (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				vlTOPp->MD0_TO_Y = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD3_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((0x200000U & vlTOPp->FETCH)) {
-		    if ((0x100000U & vlTOPp->FETCH)) {
-			vlTOPp->MD3_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((0x200000U & vlTOPp->FETCH)) {
-			    if ((0x100000U & vlTOPp->FETCH)) {
-				vlTOPp->MD3_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD2_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((0x200000U & vlTOPp->FETCH)) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
-			vlTOPp->MD2_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((0x200000U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 0x14U)))) {
-				vlTOPp->MD2_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD1_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
-		    if ((0x100000U & vlTOPp->FETCH)) {
-			vlTOPp->MD1_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0x15U)))) {
-			    if ((0x100000U & vlTOPp->FETCH)) {
-				vlTOPp->MD1_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD0_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
-			vlTOPp->MD0_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0x15U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 0x14U)))) {
-				vlTOPp->MD0_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    vlTOPp->MUL_TO_P = 1U;
-		}
-	    }
-	}
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    vlTOPp->MUL_TO_P = 1U;
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT0 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
 	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_CT0 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_CT0 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
 			if ((1U & (~ (vlTOPp->FETCH 
 				      >> 9U)))) {
 			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->LOAD_CT1 = 1U;
+				vlTOPp->INC_CT1 = 1U;
 			    }
 			}
 		    }
 		}
 	    } else {
 		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
 			    if ((1U & (~ (vlTOPp->FETCH 
 					  >> 9U)))) {
 				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->LOAD_CT1 = 1U;
+				    vlTOPp->INC_CT1 = 1U;
+				}
+			    }
+			}
+		    }
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 == 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						vlTOPp->INC_CT1 = 1U;
+					    }
+					}
+				    }
 				}
 			    }
 			}
@@ -865,67 +496,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_CT2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_CT2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT3 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->LOAD_CT3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->LOAD_CT3 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->INC_CT0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1046,99 +617,27 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->INC_CT1 = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
-		    if ((0x100000U & vlTOPp->FETCH)) {
-			if ((0x400000U & vlTOPp->FETCH)) {
-			    vlTOPp->INC_CT1 = 1U;
-			}
-		    }
-		}
-	    }
-	}
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
-		    if ((0x4000U & vlTOPp->FETCH)) {
-			if ((0x10000U & vlTOPp->FETCH)) {
-			    vlTOPp->INC_CT1 = 1U;
-			}
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U != (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				if ((1U == (0xfffU 
-					    & (vlTOPp->FETCH 
-					       >> 4U)))) {
-				    if ((0x10000U & vlTOPp->FETCH)) {
-					vlTOPp->INC_CT1 = 1U;
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
 	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((0x200U & vlTOPp->FETCH)) {
 			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->INC_CT1 = 1U;
+				vlTOPp->LOAD_CT3 = 1U;
 			    }
 			}
 		    }
 		}
 	    } else {
 		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((0x200U & vlTOPp->FETCH)) {
 				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->INC_CT1 = 1U;
-				}
-			    }
-			}
-		    }
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 == 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						vlTOPp->INC_CT1 = 1U;
-					    }
-					}
-				    }
+				    vlTOPp->LOAD_CT3 = 1U;
 				}
 			    }
 			}
@@ -1147,7 +646,102 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_CT2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_CT2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT0 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_CT0 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_CT0 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->LOAD_CT1 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->LOAD_CT1 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->INC_CT2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1259,7 +853,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->INC_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1374,103 +968,25 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_MD2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_MD2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_MD2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_MD3 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->LOAD_MD3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->LOAD_MD3 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->X_TO_RX = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD0_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		vlTOPp->X_TO_RX = 1U;
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_RX = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_RX = 1U;
-			    }
-			}
+		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
+			vlTOPp->MD0_TO_X = 1U;
 		    }
 		}
 	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((0x400U & vlTOPp->FETCH)) {
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0x15U)))) {
 			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_RX = 1U;
-				}
+					  >> 0x14U)))) {
+				vlTOPp->MD0_TO_X = 1U;
 			    }
 			}
 		    }
@@ -1478,37 +994,24 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_RX = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD1_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		vlTOPp->LOAD_RX = 1U;
-	    }
-	}
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_RX = 1U;
-			    }
-			}
+		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
+		    if ((0x100000U & vlTOPp->FETCH)) {
+			vlTOPp->MD1_TO_X = 1U;
 		    }
 		}
 	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_RX = 1U;
-				}
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0x15U)))) {
+			    if ((0x100000U & vlTOPp->FETCH)) {
+				vlTOPp->MD1_TO_X = 1U;
 			    }
 			}
 		    }
@@ -1516,16 +1019,185 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_RY = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD2_TO_X = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((0x200000U & vlTOPp->FETCH)) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
+			vlTOPp->MD2_TO_X = 1U;
+		    }
+		}
+	    } else {
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((0x200000U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 0x14U)))) {
+				vlTOPp->MD2_TO_X = 1U;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD3_TO_X = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((0x200000U & vlTOPp->FETCH)) {
+		    if ((0x100000U & vlTOPp->FETCH)) {
+			vlTOPp->MD3_TO_X = 1U;
+		    }
+		}
+	    } else {
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((0x200000U & vlTOPp->FETCH)) {
+			    if ((0x100000U & vlTOPp->FETCH)) {
+				vlTOPp->MD3_TO_X = 1U;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD0_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		vlTOPp->LOAD_RY = 1U;
+		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
+			vlTOPp->MD0_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U == (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				vlTOPp->MD0_TO_Y = 1U;
+			    }
+			}
+		    }
+		}
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD1_TO_Y = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
+		    if ((0x4000U & vlTOPp->FETCH)) {
+			vlTOPp->MD1_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U != (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				if ((1U == (0xfffU 
+					    & (vlTOPp->FETCH 
+					       >> 4U)))) {
+				    vlTOPp->MD1_TO_Y = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD2_TO_Y = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((0x8000U & vlTOPp->FETCH)) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
+			vlTOPp->MD2_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U != (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				if ((1U != (0xfffU 
+					    & (vlTOPp->FETCH 
+					       >> 4U)))) {
+				    if ((2U == (0xfffU 
+						& (vlTOPp->FETCH 
+						   >> 4U)))) {
+					vlTOPp->MD2_TO_Y = 1U;
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD3_TO_Y = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((0x8000U & vlTOPp->FETCH)) {
+		    if ((0x4000U & vlTOPp->FETCH)) {
+			vlTOPp->MD3_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U != (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				if ((1U != (0xfffU 
+					    & (vlTOPp->FETCH 
+					       >> 4U)))) {
+				    if ((2U != (0xfffU 
+						& (vlTOPp->FETCH 
+						   >> 4U)))) {
+					if ((3U == 
+					     (0xfffU 
+					      & (vlTOPp->FETCH 
+						 >> 4U)))) {
+					    vlTOPp->MD3_TO_Y = 1U;
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->X_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1539,7 +1211,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->D1_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1570,7 +1242,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1611,7 +1283,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->ALU_TO_A = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1625,7 +1297,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->Y_TO_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1664,7 +1336,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_ACH = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1678,7 +1350,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1719,26 +1391,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->IMM_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			vlTOPp->IMM_TO_D1 = 1U;
-		    } else {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    vlTOPp->IMM_TO_D1 = 1U;
-			}
-		    }
-		} else {
-		    vlTOPp->IMM_TO_D1 = 1U;
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_RA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1769,7 +1422,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_WA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1798,7 +1451,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_LOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1830,7 +1483,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_TOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1860,7 +1513,24 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:374
+    // ALWAYS at saturn_dsp.sv:570
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    vlTOPp->MUL_TO_P = 1U;
+		}
+	    }
+	}
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    vlTOPp->MUL_TO_P = 1U;
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:395
     if ((0x20000000U & vlTOPp->FETCH)) {
 	if ((0x10000000U & vlTOPp->FETCH)) {
 	    if ((0x8000000U & vlTOPp->FETCH)) {
@@ -1941,29 +1611,812 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD3 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD3 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD3 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD1 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD1 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD0 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD0 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD0 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD3_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U == (0xfU 
+						& vlTOPp->FETCH))) {
+					vlTOPp->MD3_TO_D1 = 1U;
+				    } else {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 != 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						if (
+						    (6U 
+						     != 
+						     (0xfU 
+						      & vlTOPp->FETCH))) {
+						    vlTOPp->MD3_TO_D1 = 1U;
+						}
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD2_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U == (0xfU & vlTOPp->FETCH))) {
+				    vlTOPp->MD2_TO_D1 = 1U;
+				} else {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 != 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						if (
+						    (6U 
+						     == 
+						     (0xfU 
+						      & vlTOPp->FETCH))) {
+						    vlTOPp->MD2_TO_D1 = 1U;
+						}
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD1_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U == (0xfU & vlTOPp->FETCH))) {
+				vlTOPp->MD1_TO_D1 = 1U;
+			    } else {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 == 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						vlTOPp->MD1_TO_D1 = 1U;
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD0_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U == (0xfU & vlTOPp->FETCH))) {
+			    vlTOPp->MD0_TO_D1 = 1U;
+			} else {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U == 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    vlTOPp->MD0_TO_D1 = 1U;
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->IMM_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			vlTOPp->IMM_TO_D1 = 1U;
+		    } else {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    vlTOPp->IMM_TO_D1 = 1U;
+			}
+		    }
+		} else {
+		    vlTOPp->IMM_TO_D1 = 1U;
+		}
+	    }
+	}
+    }
+    vlTOPp->D1_BUS = ((IData)(vlTOPp->MD0_TO_D1) ? 
+		      vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+		      [vlTOPp->CT0] : ((IData)(vlTOPp->MD1_TO_D1)
+				        ? vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+				       [vlTOPp->CT1]
+				        : ((IData)(vlTOPp->MD2_TO_D1)
+					    ? vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+					   [vlTOPp->CT2]
+					    : ((IData)(vlTOPp->MD3_TO_D1)
+					        ? vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+					       [vlTOPp->CT3]
+					        : ((IData)(vlTOPp->IMM_TO_D1)
+						    ? 
+						   (0xffU 
+						    & vlTOPp->FETCH)
+						    : 0U)))));
 }
 
 VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_sequent__TOP__2\n"); );
     Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Variables
+    // Begin mtask footprint  all: 
+    VL_SIG8(__Vdly__CT0,5,0);
+    VL_SIG8(__Vdly__CT1,5,0);
+    VL_SIG8(__Vdly__CT2,5,0);
+    VL_SIG8(__Vdly__CT3,5,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,7,0);
+    VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,0,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,7,0);
+    VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,0,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,7,0);
+    VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,0,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,7,0);
+    VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,0,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2,7,0);
+    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3,5,0);
+    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3,4,0);
+    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3,7,0);
     // Body
-    // ALWAYS at saturn_dsp.sv:177
+    __Vdly__CT3 = vlTOPp->CT3;
+    __Vdly__CT2 = vlTOPp->CT2;
+    __Vdly__CT1 = vlTOPp->CT1;
+    __Vdly__CT0 = vlTOPp->CT0;
+    __Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 = 0U;
+    __Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 = 0U;
+    __Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 = 0U;
+    __Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 = 0U;
+    // ALWAYS at saturn_dsp.sv:197
     vlTOPp->INST_ADDR = (0xffU & ((IData)(1U) + (IData)(vlTOPp->INST_ADDR)));
-    // ALWAYS at saturn_dsp.sv:177
+    // ALWAYS at saturn_dsp.sv:197
     if (vlTOPp->MUL_TO_P) {
 	vlTOPp->P_REG = (VL_ULL(0xffffffffffff) & ((QData)((IData)(vlTOPp->saturn_dsp__DOT__RX)) 
 						   * (QData)((IData)(vlTOPp->saturn_dsp__DOT__RY))));
     }
-    // ALWAYS at saturn_dsp.sv:177
+    // ALWAYS at saturn_dsp.sv:197
     if (vlTOPp->CLR_A) {
 	vlTOPp->A_REG = VL_ULL(0);
     }
     if (vlTOPp->ALU_TO_A) {
 	vlTOPp->A_REG = (VL_ULL(0xffffffffffff) & vlTOPp->saturn_dsp__DOT__alu_inst__DOT__INT_RES);
     }
-    // ALWAYS at saturn_dsp.sv:177
+    // ALWAYS at saturn_dsp.sv:197
+    if (vlTOPp->LOAD_CT3) {
+	__Vdly__CT3 = (0x3fU & vlTOPp->D1_BUS);
+    }
+    if (vlTOPp->INC_CT3) {
+	__Vdly__CT3 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT3)));
+    }
+    // ALWAYS at saturn_dsp.sv:197
+    if (vlTOPp->LOAD_CT2) {
+	__Vdly__CT2 = (0x3fU & vlTOPp->D1_BUS);
+    }
+    if (vlTOPp->INC_CT2) {
+	__Vdly__CT2 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT2)));
+    }
+    // ALWAYS at saturn_dsp.sv:197
+    if (vlTOPp->LOAD_CT1) {
+	__Vdly__CT1 = (0x3fU & vlTOPp->D1_BUS);
+    }
+    if (vlTOPp->INC_CT1) {
+	__Vdly__CT1 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT1)));
+    }
+    // ALWAYS at saturn_dsp.sv:197
+    if (vlTOPp->LOAD_CT0) {
+	__Vdly__CT0 = (0x3fU & vlTOPp->D1_BUS);
+    }
+    if (vlTOPp->INC_CT0) {
+	__Vdly__CT0 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT0)));
+    }
+    // ALWAYS at saturn_dsp.sv:1001
+    if (vlTOPp->LOAD_MD3) {
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
+	__Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 = 1U;
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 = 0x18U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 
+	    = vlTOPp->CT3;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1 = 0x10U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1 
+	    = vlTOPp->CT3;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2 = 8U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2 
+	    = vlTOPp->CT3;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3 = 0U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3 
+	    = vlTOPp->CT3;
+    }
+    // ALWAYS at saturn_dsp.sv:1001
+    if (vlTOPp->LOAD_MD2) {
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
+	__Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 = 1U;
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 = 0x18U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 
+	    = vlTOPp->CT2;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1 = 0x10U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1 
+	    = vlTOPp->CT2;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2 = 8U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2 
+	    = vlTOPp->CT2;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3 = 0U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3 
+	    = vlTOPp->CT2;
+    }
+    // ALWAYS at saturn_dsp.sv:1001
+    if (vlTOPp->LOAD_MD1) {
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
+	__Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 = 1U;
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 = 0x18U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 
+	    = vlTOPp->CT1;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1 = 0x10U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1 
+	    = vlTOPp->CT1;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2 = 8U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2 
+	    = vlTOPp->CT1;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3 = 0U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3 
+	    = vlTOPp->CT1;
+    }
+    // ALWAYS at saturn_dsp.sv:1001
+    if (vlTOPp->LOAD_MD0) {
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
+	__Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 = 1U;
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 = 0x18U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 
+	    = vlTOPp->CT0;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1 = 0x10U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1 
+	    = vlTOPp->CT0;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2 = 8U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2 
+	    = vlTOPp->CT0;
+	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3 
+	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
+	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3 = 0U;
+	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3 
+	    = vlTOPp->CT0;
+    }
+    // ALWAYS at saturn_dsp.sv:197
     vlTOPp->FETCH = vlTOPp->INST_IN;
-    // ALWAYS at saturn_dsp.sv:559
+    vlTOPp->CT3 = __Vdly__CT3;
+    // ALWAYSPOST at saturn_dsp.sv:1003
+    if (__Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0) {
+	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3)));
+    }
+    vlTOPp->CT2 = __Vdly__CT2;
+    // ALWAYSPOST at saturn_dsp.sv:1003
+    if (__Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0) {
+	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3)));
+    }
+    vlTOPp->CT1 = __Vdly__CT1;
+    // ALWAYSPOST at saturn_dsp.sv:1003
+    if (__Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0) {
+	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3)));
+    }
+    vlTOPp->CT0 = __Vdly__CT0;
+    // ALWAYSPOST at saturn_dsp.sv:1003
+    if (__Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0) {
+	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2)));
+	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3] 
+	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3))) 
+		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3]) 
+	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3) 
+		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3)));
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_RY = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		vlTOPp->LOAD_RY = 1U;
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_RX = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		vlTOPp->LOAD_RX = 1U;
+	    }
+	}
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_RX = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_RX = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_RX = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_RX = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_RX = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->X_TO_RX = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		vlTOPp->X_TO_RX = 1U;
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_MD3 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->LOAD_MD3 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->LOAD_MD3 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_MD2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_MD2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_MD2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_MD1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1995,7 +2448,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_MD0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2029,7 +2482,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->ACL_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2059,7 +2512,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->ACH_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2092,382 +2545,27 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD3 = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->INC_CT1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD3 = 1U;
-				}
-			    }
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
+		    if ((0x100000U & vlTOPp->FETCH)) {
+			if ((0x400000U & vlTOPp->FETCH)) {
+			    vlTOPp->INC_CT1 = 1U;
 			}
 		    }
 		}
 	    }
 	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD1 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD1 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_MD0 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD0 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD0 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD3_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U == (0xfU 
-						& vlTOPp->FETCH))) {
-					vlTOPp->MD3_TO_D1 = 1U;
-				    } else {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 != 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						if (
-						    (6U 
-						     != 
-						     (0xfU 
-						      & vlTOPp->FETCH))) {
-						    vlTOPp->MD3_TO_D1 = 1U;
-						}
-					    }
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD2_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U == (0xfU & vlTOPp->FETCH))) {
-				    vlTOPp->MD2_TO_D1 = 1U;
-				} else {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 != 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						if (
-						    (6U 
-						     == 
-						     (0xfU 
-						      & vlTOPp->FETCH))) {
-						    vlTOPp->MD2_TO_D1 = 1U;
-						}
-					    }
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD1_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U == (0xfU & vlTOPp->FETCH))) {
-				vlTOPp->MD1_TO_D1 = 1U;
-			    } else {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 == 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						vlTOPp->MD1_TO_D1 = 1U;
-					    }
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD0_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U == (0xfU & vlTOPp->FETCH))) {
-			    vlTOPp->MD0_TO_D1 = 1U;
-			} else {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U == 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    vlTOPp->MD0_TO_D1 = 1U;
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD3_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((0x8000U & vlTOPp->FETCH)) {
-		    if ((0x4000U & vlTOPp->FETCH)) {
-			vlTOPp->MD3_TO_Y = 1U;
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U != (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				if ((1U != (0xfffU 
-					    & (vlTOPp->FETCH 
-					       >> 4U)))) {
-				    if ((2U != (0xfffU 
-						& (vlTOPp->FETCH 
-						   >> 4U)))) {
-					if ((3U == 
-					     (0xfffU 
-					      & (vlTOPp->FETCH 
-						 >> 4U)))) {
-					    vlTOPp->MD3_TO_Y = 1U;
-					}
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD2_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((0x8000U & vlTOPp->FETCH)) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
-			vlTOPp->MD2_TO_Y = 1U;
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U != (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				if ((1U != (0xfffU 
-					    & (vlTOPp->FETCH 
-					       >> 4U)))) {
-				    if ((2U == (0xfffU 
-						& (vlTOPp->FETCH 
-						   >> 4U)))) {
-					vlTOPp->MD2_TO_Y = 1U;
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD1_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
 		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
 		    if ((0x4000U & vlTOPp->FETCH)) {
-			vlTOPp->MD1_TO_Y = 1U;
+			if ((0x10000U & vlTOPp->FETCH)) {
+			    vlTOPp->INC_CT1 = 1U;
+			}
 		    }
 		}
 	    } else {
@@ -2481,7 +2579,9 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 				if ((1U == (0xfffU 
 					    & (vlTOPp->FETCH 
 					       >> 4U)))) {
-				    vlTOPp->MD1_TO_Y = 1U;
+				    if ((0x10000U & vlTOPp->FETCH)) {
+					vlTOPp->INC_CT1 = 1U;
+				    }
 				}
 			    }
 			}
@@ -2489,206 +2589,55 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 		}
 	    }
 	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD0_TO_Y = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
-			vlTOPp->MD0_TO_Y = 1U;
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U == (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				vlTOPp->MD0_TO_Y = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD3_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((0x200000U & vlTOPp->FETCH)) {
-		    if ((0x100000U & vlTOPp->FETCH)) {
-			vlTOPp->MD3_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((0x200000U & vlTOPp->FETCH)) {
-			    if ((0x100000U & vlTOPp->FETCH)) {
-				vlTOPp->MD3_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD2_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((0x200000U & vlTOPp->FETCH)) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
-			vlTOPp->MD2_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((0x200000U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 0x14U)))) {
-				vlTOPp->MD2_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD1_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
-		    if ((0x100000U & vlTOPp->FETCH)) {
-			vlTOPp->MD1_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0x15U)))) {
-			    if ((0x100000U & vlTOPp->FETCH)) {
-				vlTOPp->MD1_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->MD0_TO_X = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
-			vlTOPp->MD0_TO_X = 1U;
-		    }
-		}
-	    } else {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    if ((3U == (7U & (vlTOPp->FETCH 
-				      >> 0x17U)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0x15U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 0x14U)))) {
-				vlTOPp->MD0_TO_X = 1U;
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		    vlTOPp->MUL_TO_P = 1U;
-		}
-	    }
-	}
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    vlTOPp->MUL_TO_P = 1U;
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT0 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
 	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_CT0 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_CT0 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
 			if ((1U & (~ (vlTOPp->FETCH 
 				      >> 9U)))) {
 			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->LOAD_CT1 = 1U;
+				vlTOPp->INC_CT1 = 1U;
 			    }
 			}
 		    }
 		}
 	    } else {
 		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
 			    if ((1U & (~ (vlTOPp->FETCH 
 					  >> 9U)))) {
 				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->LOAD_CT1 = 1U;
+				    vlTOPp->INC_CT1 = 1U;
+				}
+			    }
+			}
+		    }
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 == 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						vlTOPp->INC_CT1 = 1U;
+					    }
+					}
+				    }
 				}
 			    }
 			}
@@ -2697,67 +2646,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_CT2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_CT2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_CT3 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->LOAD_CT3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((0x800U & vlTOPp->FETCH)) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->LOAD_CT3 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->INC_CT0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -2878,99 +2767,27 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->INC_CT1 = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
-		    if ((0x100000U & vlTOPp->FETCH)) {
-			if ((0x400000U & vlTOPp->FETCH)) {
-			    vlTOPp->INC_CT1 = 1U;
-			}
-		    }
-		}
-	    }
-	}
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
-		    if ((0x4000U & vlTOPp->FETCH)) {
-			if ((0x10000U & vlTOPp->FETCH)) {
-			    vlTOPp->INC_CT1 = 1U;
-			}
-		    }
-		}
-	    } else {
-		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    if ((2U != (7U & (vlTOPp->FETCH 
-				      >> 0x11U)))) {
-			if ((3U == (7U & (vlTOPp->FETCH 
-					  >> 0x11U)))) {
-			    if ((0U != (0xfffU & (vlTOPp->FETCH 
-						  >> 4U)))) {
-				if ((1U == (0xfffU 
-					    & (vlTOPp->FETCH 
-					       >> 4U)))) {
-				    if ((0x10000U & vlTOPp->FETCH)) {
-					vlTOPp->INC_CT1 = 1U;
-				    }
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
 	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((0x200U & vlTOPp->FETCH)) {
 			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->INC_CT1 = 1U;
+				vlTOPp->LOAD_CT3 = 1U;
 			    }
 			}
 		    }
 		}
 	    } else {
 		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((0x200U & vlTOPp->FETCH)) {
 				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->INC_CT1 = 1U;
-				}
-			    }
-			}
-		    }
-		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
-			       | (1U == (0xfU & vlTOPp->FETCH))) 
-			      | (2U == (0xfU & vlTOPp->FETCH))) 
-			     | (3U == (0xfU & vlTOPp->FETCH))) 
-			    | (4U == (0xfU & vlTOPp->FETCH))) 
-			   | (5U == (0xfU & vlTOPp->FETCH))) 
-			  | (6U == (0xfU & vlTOPp->FETCH))) 
-			 | (7U == (0xfU & vlTOPp->FETCH)))) {
-			if ((0U != (0xfU & vlTOPp->FETCH))) {
-			    if ((1U != (0xfU & vlTOPp->FETCH))) {
-				if ((2U != (0xfU & vlTOPp->FETCH))) {
-				    if ((3U != (0xfU 
-						& vlTOPp->FETCH))) {
-					if ((4U != 
-					     (0xfU 
-					      & vlTOPp->FETCH))) {
-					    if ((5U 
-						 == 
-						 (0xfU 
-						  & vlTOPp->FETCH))) {
-						vlTOPp->INC_CT1 = 1U;
-					    }
-					}
-				    }
+				    vlTOPp->LOAD_CT3 = 1U;
 				}
 			    }
 			}
@@ -2979,7 +2796,102 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_CT2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_CT2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT0 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->LOAD_CT0 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->LOAD_CT0 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->LOAD_CT1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->LOAD_CT1 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((0x800U & vlTOPp->FETCH)) {
+			if ((0x400U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->LOAD_CT1 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->INC_CT2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3091,7 +3003,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->INC_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3206,103 +3118,25 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_MD2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_MD2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_MD2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_MD3 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->LOAD_MD3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->LOAD_MD3 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->X_TO_RX = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD0_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		vlTOPp->X_TO_RX = 1U;
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->D1_TO_RX = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_RX = 1U;
-			    }
-			}
+		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
+			vlTOPp->MD0_TO_X = 1U;
 		    }
 		}
 	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((0x400U & vlTOPp->FETCH)) {
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0x15U)))) {
 			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_RX = 1U;
-				}
+					  >> 0x14U)))) {
+				vlTOPp->MD0_TO_X = 1U;
 			    }
 			}
 		    }
@@ -3310,37 +3144,24 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_RX = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD1_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		vlTOPp->LOAD_RX = 1U;
-	    }
-	}
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->LOAD_RX = 1U;
-			    }
-			}
+		if ((1U & (~ (vlTOPp->FETCH >> 0x15U)))) {
+		    if ((0x100000U & vlTOPp->FETCH)) {
+			vlTOPp->MD1_TO_X = 1U;
 		    }
 		}
 	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((0x400U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->LOAD_RX = 1U;
-				}
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0x15U)))) {
+			    if ((0x100000U & vlTOPp->FETCH)) {
+				vlTOPp->MD1_TO_X = 1U;
 			    }
 			}
 		    }
@@ -3348,16 +3169,185 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->LOAD_RY = 0U;
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD2_TO_X = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((0x200000U & vlTOPp->FETCH)) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0x14U)))) {
+			vlTOPp->MD2_TO_X = 1U;
+		    }
+		}
+	    } else {
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((0x200000U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 0x14U)))) {
+				vlTOPp->MD2_TO_X = 1U;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD3_TO_X = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((0x200000U & vlTOPp->FETCH)) {
+		    if ((0x100000U & vlTOPp->FETCH)) {
+			vlTOPp->MD3_TO_X = 1U;
+		    }
+		}
+	    } else {
+		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    if ((3U == (7U & (vlTOPp->FETCH 
+				      >> 0x17U)))) {
+			if ((0x200000U & vlTOPp->FETCH)) {
+			    if ((0x100000U & vlTOPp->FETCH)) {
+				vlTOPp->MD3_TO_X = 1U;
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD0_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
 	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		vlTOPp->LOAD_RY = 1U;
+		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
+			vlTOPp->MD0_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U == (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				vlTOPp->MD0_TO_Y = 1U;
+			    }
+			}
+		    }
+		}
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD1_TO_Y = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xfU)))) {
+		    if ((0x4000U & vlTOPp->FETCH)) {
+			vlTOPp->MD1_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U != (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				if ((1U == (0xfffU 
+					    & (vlTOPp->FETCH 
+					       >> 4U)))) {
+				    vlTOPp->MD1_TO_Y = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD2_TO_Y = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((0x8000U & vlTOPp->FETCH)) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xeU)))) {
+			vlTOPp->MD2_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U != (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				if ((1U != (0xfffU 
+					    & (vlTOPp->FETCH 
+					       >> 4U)))) {
+				    if ((2U == (0xfffU 
+						& (vlTOPp->FETCH 
+						   >> 4U)))) {
+					vlTOPp->MD2_TO_Y = 1U;
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD3_TO_Y = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((0x8000U & vlTOPp->FETCH)) {
+		    if ((0x4000U & vlTOPp->FETCH)) {
+			vlTOPp->MD3_TO_Y = 1U;
+		    }
+		}
+	    } else {
+		if ((1U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    if ((2U != (7U & (vlTOPp->FETCH 
+				      >> 0x11U)))) {
+			if ((3U == (7U & (vlTOPp->FETCH 
+					  >> 0x11U)))) {
+			    if ((0U != (0xfffU & (vlTOPp->FETCH 
+						  >> 4U)))) {
+				if ((1U != (0xfffU 
+					    & (vlTOPp->FETCH 
+					       >> 4U)))) {
+				    if ((2U != (0xfffU 
+						& (vlTOPp->FETCH 
+						   >> 4U)))) {
+					if ((3U == 
+					     (0xfffU 
+					      & (vlTOPp->FETCH 
+						 >> 4U)))) {
+					    vlTOPp->MD3_TO_Y = 1U;
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->X_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3371,7 +3361,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->D1_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3402,7 +3392,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3443,7 +3433,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->ALU_TO_A = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3457,7 +3447,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->Y_TO_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3496,7 +3486,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_ACH = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3510,7 +3500,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3551,26 +3541,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
-    vlTOPp->IMM_TO_D1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((0x800U & vlTOPp->FETCH)) {
-		    if ((0x400U & vlTOPp->FETCH)) {
-			vlTOPp->IMM_TO_D1 = 1U;
-		    } else {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    vlTOPp->IMM_TO_D1 = 1U;
-			}
-		    }
-		} else {
-		    vlTOPp->IMM_TO_D1 = 1U;
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_RA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3601,7 +3572,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_WA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3630,7 +3601,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_LOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3662,7 +3633,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:559
+    // ALWAYS at saturn_dsp.sv:570
     vlTOPp->LOAD_TOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3692,7 +3663,24 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:374
+    // ALWAYS at saturn_dsp.sv:570
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    vlTOPp->MUL_TO_P = 1U;
+		}
+	    }
+	}
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    vlTOPp->MUL_TO_P = 1U;
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:395
     if ((0x20000000U & vlTOPp->FETCH)) {
 	if ((0x10000000U & vlTOPp->FETCH)) {
 	    if ((0x8000000U & vlTOPp->FETCH)) {
@@ -3773,6 +3761,358 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD3 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD3 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD3 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD1 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD1 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->D1_TO_MD0 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD0 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD0 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD3_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U == (0xfU 
+						& vlTOPp->FETCH))) {
+					vlTOPp->MD3_TO_D1 = 1U;
+				    } else {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 != 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						if (
+						    (6U 
+						     != 
+						     (0xfU 
+						      & vlTOPp->FETCH))) {
+						    vlTOPp->MD3_TO_D1 = 1U;
+						}
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD2_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U == (0xfU & vlTOPp->FETCH))) {
+				    vlTOPp->MD2_TO_D1 = 1U;
+				} else {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 != 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						if (
+						    (6U 
+						     == 
+						     (0xfU 
+						      & vlTOPp->FETCH))) {
+						    vlTOPp->MD2_TO_D1 = 1U;
+						}
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD1_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U != (0xfU & vlTOPp->FETCH))) {
+			    if ((1U == (0xfU & vlTOPp->FETCH))) {
+				vlTOPp->MD1_TO_D1 = 1U;
+			    } else {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U != 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    if ((5U 
+						 == 
+						 (0xfU 
+						  & vlTOPp->FETCH))) {
+						vlTOPp->MD1_TO_D1 = 1U;
+					    }
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->MD0_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if (((((((((0U == (0xfU & vlTOPp->FETCH)) 
+			       | (1U == (0xfU & vlTOPp->FETCH))) 
+			      | (2U == (0xfU & vlTOPp->FETCH))) 
+			     | (3U == (0xfU & vlTOPp->FETCH))) 
+			    | (4U == (0xfU & vlTOPp->FETCH))) 
+			   | (5U == (0xfU & vlTOPp->FETCH))) 
+			  | (6U == (0xfU & vlTOPp->FETCH))) 
+			 | (7U == (0xfU & vlTOPp->FETCH)))) {
+			if ((0U == (0xfU & vlTOPp->FETCH))) {
+			    vlTOPp->MD0_TO_D1 = 1U;
+			} else {
+			    if ((1U != (0xfU & vlTOPp->FETCH))) {
+				if ((2U != (0xfU & vlTOPp->FETCH))) {
+				    if ((3U != (0xfU 
+						& vlTOPp->FETCH))) {
+					if ((4U == 
+					     (0xfU 
+					      & vlTOPp->FETCH))) {
+					    vlTOPp->MD0_TO_D1 = 1U;
+					}
+				    }
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->IMM_TO_D1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((0x800U & vlTOPp->FETCH)) {
+		    if ((0x400U & vlTOPp->FETCH)) {
+			vlTOPp->IMM_TO_D1 = 1U;
+		    } else {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    vlTOPp->IMM_TO_D1 = 1U;
+			}
+		    }
+		} else {
+		    vlTOPp->IMM_TO_D1 = 1U;
+		}
+	    }
+	}
+    }
+    vlTOPp->D1_BUS = ((IData)(vlTOPp->MD0_TO_D1) ? 
+		      vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+		      [vlTOPp->CT0] : ((IData)(vlTOPp->MD1_TO_D1)
+				        ? vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+				       [vlTOPp->CT1]
+				        : ((IData)(vlTOPp->MD2_TO_D1)
+					    ? vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+					   [vlTOPp->CT2]
+					    : ((IData)(vlTOPp->MD3_TO_D1)
+					        ? vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+					       [vlTOPp->CT3]
+					        : ((IData)(vlTOPp->IMM_TO_D1)
+						    ? 
+						   (0xffU 
+						    & vlTOPp->FETCH)
+						    : 0U)))));
+}
+
+void Vsaturn_dsp::_initial__TOP__3(Vsaturn_dsp__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_initial__TOP__3\n"); );
+    Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    // INITIAL at saturn_dsp.sv:245
+    vlTOPp->saturn_dsp__DOT__MD0_DI = ((IData)(vlTOPp->D1_TO_MD0)
+				        ? vlTOPp->D1_BUS
+				        : vlTOPp->D0_BUS_IN);
+    // INITIAL at saturn_dsp.sv:260
+    vlTOPp->saturn_dsp__DOT__MD1_DI = ((IData)(vlTOPp->D1_TO_MD1)
+				        ? vlTOPp->D1_BUS
+				        : vlTOPp->D0_BUS_IN);
+    // INITIAL at saturn_dsp.sv:275
+    vlTOPp->saturn_dsp__DOT__MD2_DI = ((IData)(vlTOPp->D1_TO_MD2)
+				        ? vlTOPp->D1_BUS
+				        : vlTOPp->D0_BUS_IN);
+    // INITIAL at saturn_dsp.sv:290
+    vlTOPp->saturn_dsp__DOT__MD3_DI = ((IData)(vlTOPp->D1_TO_MD3)
+				        ? vlTOPp->D1_BUS
+				        : vlTOPp->D0_BUS_IN);
 }
 
 void Vsaturn_dsp::_eval(Vsaturn_dsp__Syms* __restrict vlSymsp) {
@@ -3791,6 +4131,7 @@ void Vsaturn_dsp::_eval_initial(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->__Vclklast__TOP__CLOCK = vlTOPp->CLOCK;
+    vlTOPp->_initial__TOP__3(vlSymsp);
 }
 
 void Vsaturn_dsp::final() {
@@ -3829,17 +4170,9 @@ void Vsaturn_dsp::_ctor_var_reset() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_ctor_var_reset\n"); );
     // Body
     CLOCK = VL_RAND_RESET_I(1);
-    BUS_DI = VL_RAND_RESET_I(32);
-    BUS_DO = VL_RAND_RESET_I(32);
+    D0_BUS_IN = VL_RAND_RESET_I(32);
+    D0_BUS_OUT = VL_RAND_RESET_I(32);
     FETCH = VL_RAND_RESET_I(32);
-    D0_TO_CT0 = VL_RAND_RESET_I(1);
-    D0_TO_CT1 = VL_RAND_RESET_I(1);
-    D0_TO_CT2 = VL_RAND_RESET_I(1);
-    D0_TO_CT3 = VL_RAND_RESET_I(1);
-    D1_TO_CT0 = VL_RAND_RESET_I(1);
-    D1_TO_CT1 = VL_RAND_RESET_I(1);
-    D1_TO_CT2 = VL_RAND_RESET_I(1);
-    D1_TO_CT3 = VL_RAND_RESET_I(1);
     LOAD_CT0 = VL_RAND_RESET_I(1);
     LOAD_CT1 = VL_RAND_RESET_I(1);
     LOAD_CT2 = VL_RAND_RESET_I(1);
@@ -3900,9 +4233,30 @@ void Vsaturn_dsp::_ctor_var_reset() {
     LOAD_PROG_RAM = VL_RAND_RESET_I(1);
     P_REG = VL_RAND_RESET_Q(48);
     A_REG = VL_RAND_RESET_Q(48);
+    CT0 = VL_RAND_RESET_I(6);
+    CT1 = VL_RAND_RESET_I(6);
+    CT2 = VL_RAND_RESET_I(6);
+    CT3 = VL_RAND_RESET_I(6);
+    D1_BUS = VL_RAND_RESET_I(32);
     INST_ADDR = VL_RAND_RESET_I(8);
     INST_IN = VL_RAND_RESET_I(32);
     saturn_dsp__DOT__RX = VL_RAND_RESET_I(32);
     saturn_dsp__DOT__RY = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__MD0_DI = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__MD1_DI = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__MD2_DI = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__MD3_DI = VL_RAND_RESET_I(32);
     saturn_dsp__DOT__alu_inst__DOT__INT_RES = VL_RAND_RESET_Q(50);
+    { int __Vi0=0; for (; __Vi0<64; ++__Vi0) {
+	    saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);
+    }}
+    { int __Vi0=0; for (; __Vi0<64; ++__Vi0) {
+	    saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);
+    }}
+    { int __Vi0=0; for (; __Vi0<64; ++__Vi0) {
+	    saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);
+    }}
+    { int __Vi0=0; for (; __Vi0<64; ++__Vi0) {
+	    saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);
+    }}
 }

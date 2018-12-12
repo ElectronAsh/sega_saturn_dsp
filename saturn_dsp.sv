@@ -1,21 +1,11 @@
 module saturn_dsp (
 	input logic CLOCK,
 	
-	input logic [31:0] BUS_DI,
-	output logic [31:0] BUS_DO,
+	input logic [31:0] D0_BUS_IN,
+	output logic [31:0] D0_BUS_OUT,
 	
 `ifdef VERILATOR
 	output logic [31:0] FETCH,
-	
-	output logic D0_TO_CT0,
-	output logic D0_TO_CT1,
-	output logic D0_TO_CT2,
-	output logic D0_TO_CT3,
-	
-	output logic D1_TO_CT0,
-	output logic D1_TO_CT1,
-	output logic D1_TO_CT2,
-	output logic D1_TO_CT3,
 
 	output logic LOAD_CT0,
 	output logic LOAD_CT1,
@@ -77,7 +67,7 @@ module saturn_dsp (
 	output logic LOAD_ACH,
 	output logic LOAD_ACL,
 
-	output logic IMM_TO_D1,	// I think IMM to "D0" is a typo on the block diagram. ElectronAsh.
+	output logic IMM_TO_D1,	// I think IMM to "D0" is a mistake on the block diagram. ElectronAsh.
 	
 	output logic IMM_TO_LOP,
 	output logic D1_TO_LOP,
@@ -101,6 +91,13 @@ module saturn_dsp (
 	
 	output logic [47:0] P_REG,
 	output logic [47:0] A_REG,
+	
+	output logic [5:0] CT0,
+	output logic [5:0] CT1,
+	output logic [5:0] CT2,
+	output logic [5:0] CT3,
+	
+	output logic [31:0] D1_BUS,
 `endif
 	
 	output logic [7:0] INST_ADDR,	
@@ -114,25 +111,49 @@ logic MD1_TO_D0;
 logic MD2_TO_D0;
 logic MD3_TO_D0;
 logic [31:0] D0_BUS = (MD0_TO_D0) ? MD0_DOUT :
-							(MD1_TO_D0) ? MD1_DOUT :
-							(MD2_TO_D0) ? MD2_DOUT :
-							(MD3_TO_D0) ? MD3_DOUT : 32'h00000000;
-
+					  (MD1_TO_D0) ? MD1_DOUT :
+					  (MD2_TO_D0) ? MD2_DOUT :
+					  (MD3_TO_D0) ? MD3_DOUT :
+					  32'h00000000;
 
 logic MD0_TO_D1;
 logic MD1_TO_D1;
 logic MD2_TO_D1;
 logic MD3_TO_D1;
-logic [31:0] D1_BUS = (MD0_TO_D1) ? MD0_DOUT :
-							(MD1_TO_D1) ? MD1_DOUT :
-							(MD2_TO_D1) ? MD2_DOUT :
-							(MD3_TO_D1) ? MD3_DOUT : 32'h00000000;
+assign D1_BUS = (MD0_TO_D1) ? MD0_DOUT :
+					  (MD1_TO_D1) ? MD1_DOUT :
+					  (MD2_TO_D1) ? MD2_DOUT :
+					  (MD3_TO_D1) ? MD3_DOUT : 
+					  (IMM_TO_D1) ? {24'h000000,FETCH[7:0]} :
+					  32'h00000000;
+
+logic MD0_TO_X;
+logic MD1_TO_X;
+logic MD2_TO_X;
+logic MD3_TO_X;
+logic [31:0] X_BUS = (MD0_TO_X) ? MD0_DOUT :
+					 (MD1_TO_X) ? MD1_DOUT :
+					 (MD2_TO_X) ? MD2_DOUT :
+					 (MD3_TO_X) ? MD3_DOUT :
+					 32'h00000000;
+
+logic MD0_TO_Y;
+logic MD1_TO_Y;
+logic MD2_TO_Y;
+logic MD3_TO_Y;
+logic [31:0] Y_BUS = (MD0_TO_Y) ? MD0_DOUT :
+					 (MD1_TO_Y) ? MD1_DOUT :
+					 (MD2_TO_Y) ? MD2_DOUT :
+					 (MD3_TO_Y) ? MD3_DOUT :
+					 32'h00000000;
 
 
+`ifndef VERILATOR			
 logic [5:0] CT0;
 logic [5:0] CT1;
 logic [5:0] CT2;
 logic [5:0] CT3;
+`endif
 
 
 // "RA (W) This is the register that stores the address for accessing the data
@@ -147,8 +168,7 @@ logic [7:0] RA;
 logic [31:0] RA0;
 logic [31:0] WA0;
 
-logic [31:0] X_BUS;
-logic [31:0] Y_BUS;
+
 
 
 logic [31:0] RX;		// Multiplier first input register.
@@ -183,6 +203,15 @@ always_ff @(posedge CLOCK) begin
 	if (CLR_A) A_REG <= 48'h000000000000;
 	if (ALU_TO_A) A_REG <= ALU_RES;
 	
+	if (LOAD_CT0) CT0 <= D1_BUS;
+	if (LOAD_CT1) CT1 <= D1_BUS;
+	if (LOAD_CT2) CT2 <= D1_BUS;
+	if (LOAD_CT3) CT3 <= D1_BUS;
+	
+	if (INC_CT0) CT0 <= CT0 + 1'b1;
+	if (INC_CT1) CT1 <= CT1 + 1'b1;
+	if (INC_CT2) CT2 <= CT2 + 1'b1;
+	if (INC_CT3) CT3 <= CT3 + 1'b1;
 end
 
 
@@ -213,9 +242,9 @@ alu alu_inst (
 
 
 
-logic [31:0] MD0_DI;
-logic [3:0] MD0_BE;
-logic MD0_WREN;
+logic [31:0] MD0_DI = (D1_TO_MD0) ? D1_BUS : D0_BUS_IN;
+logic [3:0] MD0_BE = 4'b1111;	// D0 access not added yet.
+logic MD0_WREN = LOAD_MD0;
 logic [31:0] MD0_DOUT;
 data_ram	data_ram_md0 (
 	.clock ( CLOCK ),
@@ -228,9 +257,9 @@ data_ram	data_ram_md0 (
 	.q ( MD0_DOUT )
 );
 
-logic [31:0] MD1_DI;
-logic [3:0] MD1_BE;
-logic MD1_WREN;
+logic [31:0] MD1_DI = (D1_TO_MD1) ? D1_BUS : D0_BUS_IN;
+logic [3:0] MD1_BE = 4'b1111;	// D0 access not added yet.
+logic MD1_WREN = LOAD_MD1;
 logic [31:0] MD1_DOUT;
 data_ram	data_ram_md1 (
 	.clock ( CLOCK ),
@@ -243,9 +272,9 @@ data_ram	data_ram_md1 (
 	.q ( MD1_DOUT )
 );
 
-logic [31:0] MD2_DI;
-logic [3:0] MD2_BE;
-logic MD2_WREN;
+logic [31:0] MD2_DI = (D1_TO_MD2) ? D1_BUS : D0_BUS_IN;
+logic [3:0] MD2_BE = 4'b1111;	// D0 access not added yet.
+logic MD2_WREN = LOAD_MD2;
 logic [31:0] MD2_DOUT;
 data_ram	data_ram_md2 (
 	.clock ( CLOCK ),
@@ -258,9 +287,9 @@ data_ram	data_ram_md2 (
 	.q ( MD2_DOUT )
 );
 
-logic [31:0] MD3_DI;
-logic [3:0] MD3_BE;
-logic MD3_WREN;
+logic [31:0] MD3_DI = (D1_TO_MD3) ? D1_BUS : D0_BUS_IN;
+logic [3:0] MD3_BE = 4'b1111;	// D0 access not added yet.
+logic MD3_WREN = LOAD_MD3;
 logic [31:0] MD3_DOUT;
 data_ram	data_ram_md3 (
 	.clock ( CLOCK ),
@@ -277,14 +306,6 @@ data_ram	data_ram_md3 (
 instruction_decoder instruction_decoder_inst
 (
 	.FETCH(FETCH) ,			// input [31:0] FETCH
-	.D0_TO_CT0(D0_TO_CT0) ,	// output  D0_TO_CT0
-	.D0_TO_CT1(D0_TO_CT1) ,	// output  D0_TO_CT1
-	.D0_TO_CT2(D0_TO_CT2) ,	// output  D0_TO_CT2
-	.D0_TO_CT3(D0_TO_CT3) ,	// output  D0_TO_CT3
-	.D1_TO_CT0(D1_TO_CT0) ,	// output  D1_TO_CT0
-	.D1_TO_CT1(D1_TO_CT1) ,	// output  D1_TO_CT1
-	.D1_TO_CT2(D1_TO_CT2) ,	// output  D1_TO_CT2
-	.D1_TO_CT3(D1_TO_CT3) ,	// output  D1_TO_CT3
 	.LOAD_CT0(LOAD_CT0) ,	// output  LOAD_CT0
 	.LOAD_CT1(LOAD_CT1) ,	// output  LOAD_CT1
 	.LOAD_CT2(LOAD_CT2) ,	// output  LOAD_CT2
@@ -457,16 +478,6 @@ endmodule
 module instruction_decoder (
 	input logic [31:0] FETCH,
 	
-	output logic D0_TO_CT0,
-	output logic D0_TO_CT1,
-	output logic D0_TO_CT2,
-	output logic D0_TO_CT3,
-	
-	output logic D1_TO_CT0,
-	output logic D1_TO_CT1,
-	output logic D1_TO_CT2,
-	output logic D1_TO_CT3,
-
 	output logic LOAD_CT0,
 	output logic LOAD_CT1,
 	output logic LOAD_CT2,
@@ -559,16 +570,6 @@ module instruction_decoder (
 always_comb begin
 
 	// Defaults...
-	D0_TO_CT0 <= 1'b0;
-	D0_TO_CT1 <= 1'b0;
-	D0_TO_CT2 <= 1'b0;
-	D0_TO_CT3 <= 1'b0;
-	
-	D1_TO_CT0 <= 1'b0;
-	D1_TO_CT1 <= 1'b0;
-	D1_TO_CT2 <= 1'b0;
-	D1_TO_CT3 <= 1'b0;
-
 	LOAD_CT0 <= 1'b0;
 	LOAD_CT1 <= 1'b0;
 	LOAD_CT2 <= 1'b0;
