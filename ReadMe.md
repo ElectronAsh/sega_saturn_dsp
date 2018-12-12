@@ -18,7 +18,11 @@ To run the sim for the DSP, just run the ./Verilate.sh script.
 
 It should cd into the "out" folder, regardless of whether Verilator runs successfully or not, so watch out for that.
 
-If Verilator and the make command were successful, you should be able to simply run the resulting executable...
+If Verilator was successful, you should then be able to cd into the "out" folder, then run...
+
+make -f Vsaturn_dsp.mk
+
+Then run the executable...
 
 ./Vsaturn_dsp
 
