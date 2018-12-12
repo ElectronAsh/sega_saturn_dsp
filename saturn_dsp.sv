@@ -102,6 +102,7 @@ module saturn_dsp (
 	
 	output logic [7:0] INST_ADDR,	
 	input logic [31:0] INST_IN
+	
 );
 
 
