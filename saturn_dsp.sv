@@ -1,26 +1,125 @@
 module saturn_dsp (
-	input CLOCK,
+	input logic CLOCK,
 	
-	input [31:0] BUS_DI,
-	output [31:0] BUS_DO
+	input logic [31:0] BUS_DI,
+	output logic [31:0] BUS_DO,
+	
+`ifdef VERILATOR
+	output logic [31:0] FETCH,
+	
+	output logic D0_TO_CT0,
+	output logic D0_TO_CT1,
+	output logic D0_TO_CT2,
+	output logic D0_TO_CT3,
+	
+	output logic D1_TO_CT0,
+	output logic D1_TO_CT1,
+	output logic D1_TO_CT2,
+	output logic D1_TO_CT3,
+
+	output logic LOAD_CT0,
+	output logic LOAD_CT1,
+	output logic LOAD_CT2,
+	output logic LOAD_CT3,
+
+	output logic INC_CT0,
+	output logic INC_CT1,
+	output logic INC_CT2,
+	output logic INC_CT3,
+	
+	output logic MD0_TO_X,
+	output logic MD1_TO_X,
+	output logic MD2_TO_X,
+	output logic MD3_TO_X,
+	
+	output logic MD0_TO_Y,
+	output logic MD1_TO_Y,
+	output logic MD2_TO_Y,
+	output logic MD3_TO_Y,
+
+	output logic MD0_TO_D1,
+	output logic MD1_TO_D1,
+	output logic MD2_TO_D1,
+	output logic MD3_TO_D1,
+	
+	output logic D1_TO_MD0,
+	output logic D1_TO_MD1,
+	output logic D1_TO_MD2,
+	output logic D1_TO_MD3,
+	
+	output logic ACH_TO_D1,
+	output logic ACL_TO_D1,
+	
+	output logic LOAD_MD0,
+	output logic LOAD_MD1,
+	output logic LOAD_MD2,
+	output logic LOAD_MD3,
+	
+	output logic X_TO_RX,
+	output logic D1_TO_RX,
+	
+	output logic LOAD_RX,
+	output logic LOAD_RY,
+	
+	output logic PC_TO_TOP,
+	output logic D1_TO_TOP,
+	
+	output logic MUL_TO_P,
+	output logic P_TO_PL,
+	output logic X_TO_PL,
+	output logic D1_TO_PL,
+	
+	output logic LOAD_PL,
+	
+	output logic ALU_TO_ACL,
+	output logic Y_TO_ACL,
+	
+	output logic LOAD_ACH,
+	output logic LOAD_ACL,
+
+	output logic IMM_TO_D1,	// I think IMM to "D0" is a typo on the block diagram. ElectronAsh.
+	
+	output logic IMM_TO_LOP,
+	output logic D1_TO_LOP,
+	
+	output logic PC_TO_D0,
+
+	output logic LOAD_RA,
+	output logic RA_TO_RAMS,
+	
+	output logic SHIFT_L16_TO_D1,
+	
+	output logic CLR_A,
+	
+	output logic LOAD_RA0,
+	output logic LOAD_WA0,
+	
+	output logic LOAD_LOP,
+	output logic LOAD_TOP,
+	
+	output logic LOAD_PROG_RAM,
+`endif
+	
+	output logic [7:0] INST_ADDR,	
+	input logic [31:0] INST_IN
 );
 
 
-wire MD0_TO_D0;
-wire MD1_TO_D0;
-wire MD2_TO_D0;
-wire MD3_TO_D0;
-wire [31:0] D0_BUS = (MD0_TO_D0) ? MD0_DOUT :
+logic MD0_TO_D0;
+logic MD1_TO_D0;
+logic MD2_TO_D0;
+logic MD3_TO_D0;
+logic [31:0] D0_BUS = (MD0_TO_D0) ? MD0_DOUT :
 							(MD1_TO_D0) ? MD1_DOUT :
 							(MD2_TO_D0) ? MD2_DOUT :
 							(MD3_TO_D0) ? MD3_DOUT : 32'h00000000;
 
 
-wire MD0_TO_D1;
-wire MD1_TO_D1;
-wire MD2_TO_D1;
-wire MD3_TO_D1;
-wire [31:0] D1_BUS = (MD0_TO_D1) ? MD0_DOUT :
+logic MD0_TO_D1;
+logic MD1_TO_D1;
+logic MD2_TO_D1;
+logic MD3_TO_D1;
+logic [31:0] D1_BUS = (MD0_TO_D1) ? MD0_DOUT :
 							(MD1_TO_D1) ? MD1_DOUT :
 							(MD2_TO_D1) ? MD2_DOUT :
 							(MD3_TO_D1) ? MD3_DOUT : 32'h00000000;
@@ -50,13 +149,13 @@ logic [31:0] WA0;
 logic [47:0] A_REG;	// The A register ACH(16),ACL(32).
 
 
-wire [31:0] X_BUS;
-wire [31:0] Y_BUS;
+logic [31:0] X_BUS;
+logic [31:0] Y_BUS;
 
 
 logic [31:0] RX;		// Multiplier first input register.
 logic [31:0] RY;		// Multiplier second input register.
-wire [47:0] MUL_RESULT = RX * RY;	// The multiplier itself...
+logic [47:0] MUL_RESULT = RX * RY;	// The multiplier itself...
 logic [47:0] P_REG;	// The P register PH(16),PL(32), for latching the multiplier result, and feeding to the ALU "B" input...
 
 
@@ -66,7 +165,14 @@ logic [47:0] P_REG;	// The P register PH(16),PL(32), for latching the multiplier
 logic [7:0] TOP;
 
 // Instruction Fetch register.
-wire [31:0] FETCH;
+`ifndef VERILATOR
+logic [31:0] FETCH;
+`endif
+
+always_ff @(posedge CLOCK) begin
+	FETCH <= INST_IN;
+	INST_ADDR <= INST_ADDR + 1;
+end
 
 
 // "This is a 12-bit register that stores the loop counter. The number of
@@ -74,11 +180,11 @@ wire [31:0] FETCH;
 logic [11:0] LOP;
 
 
-wire [47:0] ALU_RES;
-wire S_FLAG;
-wire Z_FLAG;
-wire C_FLAG;
-wire V_FLAG;
+logic [47:0] ALU_RES;
+logic S_FLAG;
+logic Z_FLAG;
+logic C_FLAG;
+logic V_FLAG;
 
 alu alu_inst (
 	.A_BUS( A_REG ),		// ACH(16),ACL(32).
@@ -96,10 +202,10 @@ alu alu_inst (
 
 
 
-wire [31:0] MD0_DI;
-wire [3:0] MD0_BE;
-wire MD0_WREN;
-wire [31:0] MD0_DOUT;
+logic [31:0] MD0_DI;
+logic [3:0] MD0_BE;
+logic MD0_WREN;
+logic [31:0] MD0_DOUT;
 data_ram	data_ram_md0 (
 	.clock ( CLOCK ),
 	
@@ -111,10 +217,10 @@ data_ram	data_ram_md0 (
 	.q ( MD0_DOUT )
 );
 
-wire [31:0] MD1_DI;
-wire [3:0] MD1_BE;
-wire MD1_WREN;
-wire [31:0] MD1_DOUT;
+logic [31:0] MD1_DI;
+logic [3:0] MD1_BE;
+logic MD1_WREN;
+logic [31:0] MD1_DOUT;
 data_ram	data_ram_md1 (
 	.clock ( CLOCK ),
 	
@@ -126,10 +232,10 @@ data_ram	data_ram_md1 (
 	.q ( MD1_DOUT )
 );
 
-wire [31:0] MD2_DI;
-wire [3:0] MD2_BE;
-wire MD2_WREN;
-wire [31:0] MD2_DOUT;
+logic [31:0] MD2_DI;
+logic [3:0] MD2_BE;
+logic MD2_WREN;
+logic [31:0] MD2_DOUT;
 data_ram	data_ram_md2 (
 	.clock ( CLOCK ),
 	
@@ -141,10 +247,10 @@ data_ram	data_ram_md2 (
 	.q ( MD2_DOUT )
 );
 
-wire [31:0] MD3_DI;
-wire [3:0] MD3_BE;
-wire MD3_WREN;
-wire [31:0] MD3_DOUT;
+logic [31:0] MD3_DI;
+logic [3:0] MD3_BE;
+logic MD3_WREN;
+logic [31:0] MD3_DOUT;
 data_ram	data_ram_md3 (
 	.clock ( CLOCK ),
 	
@@ -157,6 +263,76 @@ data_ram	data_ram_md3 (
 );
 
 
+instruction_decoder instruction_decoder_inst
+(
+	.FETCH(FETCH) ,			// input [31:0] FETCH
+	.D0_TO_CT0(D0_TO_CT0) ,	// output  D0_TO_CT0
+	.D0_TO_CT1(D0_TO_CT1) ,	// output  D0_TO_CT1
+	.D0_TO_CT2(D0_TO_CT2) ,	// output  D0_TO_CT2
+	.D0_TO_CT3(D0_TO_CT3) ,	// output  D0_TO_CT3
+	.D1_TO_CT0(D1_TO_CT0) ,	// output  D1_TO_CT0
+	.D1_TO_CT1(D1_TO_CT1) ,	// output  D1_TO_CT1
+	.D1_TO_CT2(D1_TO_CT2) ,	// output  D1_TO_CT2
+	.D1_TO_CT3(D1_TO_CT3) ,	// output  D1_TO_CT3
+	.LOAD_CT0(LOAD_CT0) ,	// output  LOAD_CT0
+	.LOAD_CT1(LOAD_CT1) ,	// output  LOAD_CT1
+	.LOAD_CT2(LOAD_CT2) ,	// output  LOAD_CT2
+	.LOAD_CT3(LOAD_CT3) ,	// output  LOAD_CT3
+	.INC_CT0(INC_CT0) ,		// output  INC_CT0
+	.INC_CT1(INC_CT1) ,		// output  INC_CT1
+	.INC_CT2(INC_CT2) ,		// output  INC_CT2
+	.INC_CT3(INC_CT3) ,		// output  INC_CT3
+	.MD0_TO_X(MD0_TO_X) ,	// output  MD0_TO_X
+	.MD1_TO_X(MD1_TO_X) ,	// output  MD1_TO_X
+	.MD2_TO_X(MD2_TO_X) ,	// output  MD2_TO_X
+	.MD3_TO_X(MD3_TO_X) ,	// output  MD3_TO_X
+	.MD0_TO_Y(MD0_TO_Y) ,	// output  MD0_TO_Y
+	.MD1_TO_Y(MD1_TO_Y) ,	// output  MD1_TO_Y
+	.MD2_TO_Y(MD2_TO_Y) ,	// output  MD2_TO_Y
+	.MD3_TO_Y(MD3_TO_Y) ,	// output  MD3_TO_Y
+	.MD0_TO_D1(MD0_TO_D1) ,	// output  MD0_TO_D1
+	.MD1_TO_D1(MD1_TO_D1) ,	// output  MD1_TO_D1
+	.MD2_TO_D1(MD2_TO_D1) ,	// output  MD2_TO_D1
+	.MD3_TO_D1(MD3_TO_D1) ,	// output  MD3_TO_D1
+	.D1_TO_MD0(D1_TO_MD0) ,	// output  D1_TO_MD0
+	.D1_TO_MD1(D1_TO_MD1) ,	// output  D1_TO_MD1
+	.D1_TO_MD2(D1_TO_MD2) ,	// output  D1_TO_MD2
+	.D1_TO_MD3(D1_TO_MD3) ,	// output  D1_TO_MD3
+	.ACH_TO_D1(ACH_TO_D1) ,	// output  ACH_TO_D1
+	.ACL_TO_D1(ACL_TO_D1) ,	// output  ACL_TO_D1
+	.LOAD_MD0(LOAD_MD0) ,	// output  LOAD_MD0
+	.LOAD_MD1(LOAD_MD1) ,	// output  LOAD_MD1
+	.LOAD_MD2(LOAD_MD2) ,	// output  LOAD_MD2
+	.LOAD_MD3(LOAD_MD3) ,	// output  LOAD_MD3
+	.X_TO_RX(X_TO_RX) ,		// output  X_TO_RX
+	.D1_TO_RX(D1_TO_RX) ,	// output  D1_TO_RX
+	.LOAD_RX(LOAD_RX) ,		// output  LOAD_RX
+	.LOAD_RY(LOAD_RY) ,		// output  LOAD_RY
+	.PC_TO_TOP(PC_TO_TOP) ,	// output  PC_TO_TOP
+	.D1_TO_TOP(D1_TO_TOP) ,	// output  D1_TO_TOP
+	.MUL_TO_P(MUL_TO_P) ,	// output  MUL_TO_P
+	.P_TO_PL(P_TO_PL) ,		// output  P_TO_PL
+	.X_TO_PL(X_TO_PL) ,		// output  X_TO_PL
+	.D1_TO_PL(D1_TO_PL) ,	// output  D1_TO_PL
+	.LOAD_PL(LOAD_PL) ,		// output  LOAD_PL
+	.ALU_TO_ACL(ALU_TO_ACL) ,	// output  ALU_TO_ACL
+	.Y_TO_ACL(Y_TO_ACL) ,	// output  Y_TO_ACL
+	.LOAD_ACH(LOAD_ACH) ,	// output  LOAD_ACH
+	.LOAD_ACL(LOAD_ACL) ,	// output  LOAD_ACL
+	.IMM_TO_D1(IMM_TO_D1) ,	// output  IMM_TO_D1
+	.IMM_TO_LOP(IMM_TO_LOP) ,	// output  IMM_TO_LOP
+	.D1_TO_LOP(D1_TO_LOP) ,	// output  D1_TO_LOP
+	.PC_TO_D0(PC_TO_D0) ,	// output  PC_TO_D0
+	.LOAD_RA(LOAD_RA) ,		// output  LOAD_RA
+	.RA_TO_RAMS(RA_TO_RAMS) ,	// output  RA_TO_RAMS
+	.SHIFT_L16_TO_D1(SHIFT_L16_TO_D1) ,	// output  SHIFT_L16_TO_D1
+	.CLR_A(CLR_A) ,			// output  CLR_A
+	.LOAD_RA0(LOAD_RA0) ,	// output  LOAD_RA0
+	.LOAD_WA0(LOAD_WA0) ,	// output  LOAD_WA0
+	.LOAD_LOP(LOAD_LOP) ,	// output  LOAD_LOP
+	.LOAD_TOP(LOAD_TOP) ,	// output  LOAD_TOP
+	.LOAD_PROG_RAM(LOAD_PROG_RAM) 	// output  LOAD_PROG_RAM
+);
 
 
 endmodule
@@ -181,7 +357,7 @@ module alu (
 );
 
 
-wire [49:0] INT_RES;	// Two extra MSB bits. Bit [49] for checking for Overflow, and bit [48] for the Carry flag.
+logic [49:0] INT_RES;	// Two extra MSB bits. Bit [49] for checking for Overflow, and bit [48] for the Carry flag.
 assign RESULT = INT_RES[47:0];
 
 always_comb begin
@@ -328,6 +504,7 @@ module instruction_decoder (
 	output logic D1_TO_TOP,
 	
 	output logic MUL_TO_P,
+	output logic P_TO_PL,
 	output logic X_TO_PL,
 	output logic D1_TO_PL,
 	
@@ -497,7 +674,8 @@ always_comb begin
 				if (FETCH[22]) INC_CT3 <= 1'b1;
 			end
 			endcase
-			
+		end
+		
 		// Handle MOV MUL,P
 		3'b010: begin
 			MUL_TO_P <= 1'b1;
@@ -530,8 +708,10 @@ always_comb begin
 				LOAD_PL <= 1'b1;
 				if (FETCH[22]) INC_CT0 <= 1'b1;
 			end
-		end
-
+			endcase
+		end		
+		endcase	// case (FETCH[25:23])
+		
 		
 		// Handle Y-Bus control.
 		case (FETCH[19:17]) 
@@ -561,6 +741,7 @@ always_comb begin
 				if (FETCH[16]) INC_CT3 <= 1'b1;
 			end
 			endcase
+		end
 			
 		// Handle CLR A.
 		3'b001: begin
@@ -603,8 +784,7 @@ always_comb begin
 			end
 			endcase
 		end
-		
-		endcase
+		endcase	// case (FETCH[19:17])
 		
 		
 		// Handle D1-Bus control.
@@ -687,7 +867,6 @@ always_comb begin
 		
 		// Handle MOV [s],[d]
 		2'b11: begin
-		
 			// DESTINATION.
 			case (FETCH[11:8])
 			4'b0000: begin				// Source to DATA RAM0, CT0++
@@ -744,6 +923,8 @@ always_comb begin
 			4'b1111: begin				// Source to CT3.
 				LOAD_CT3 <= 1'b1;
 			end
+			endcase
+
 			
 			// SOURCE.
 			case (FETCH[3:0])
@@ -775,7 +956,6 @@ always_comb begin
 				MD3_TO_D1 <= 1'b1;
 				INC_CT3 <= 1'b1;
 			end
-			endcase
 			4'b1000: ;				// No field.
 			4'b1001: begin
 				ACL_TO_D1 <= 1'b1;	// ALU Low.
@@ -783,10 +963,39 @@ always_comb begin
 			4'b1010: begin
 				ACH_TO_D1 <= 1'b1;	// ALU High.
 			end
+			endcase
 		end
+	endcase
 	end
+	
 end
-
 
 endmodule
 
+`ifdef VERILATOR
+module data_ram(
+	input logic clock,
+	input logic [5:0] address,
+
+	input logic [31:0] data,
+	input logic [3:0] byteena,
+	input logic wren,
+
+	output logic [31:0] q
+);
+
+logic [31:0] RAM [0:63];
+
+always_ff @(posedge clock) begin
+	if (wren) begin
+		if (byteena[3]) RAM[address][31:24] <= data;
+		if (byteena[2]) RAM[address][23:16] <= data;
+		if (byteena[1]) RAM[address][15:8] <= data;
+		if (byteena[0]) RAM[address][7:0] <= data;	
+	end
+end
+
+assign q = RAM[address];
+
+endmodule
+`endif
