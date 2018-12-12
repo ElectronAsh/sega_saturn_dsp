@@ -71,7 +71,7 @@ VL_MODULE(Vsaturn_dsp) {
     VL_OUT8(X_TO_PL,0,0);
     VL_OUT8(D1_TO_PL,0,0);
     VL_OUT8(LOAD_PL,0,0);
-    VL_OUT8(ALU_TO_ACL,0,0);
+    VL_OUT8(ALU_TO_A,0,0);
     VL_OUT8(Y_TO_ACL,0,0);
     VL_OUT8(LOAD_ACH,0,0);
     VL_OUT8(LOAD_ACL,0,0);
@@ -93,9 +93,15 @@ VL_MODULE(Vsaturn_dsp) {
     VL_OUT(BUS_DO,31,0);
     VL_OUT(FETCH,31,0);
     VL_IN(INST_IN,31,0);
+    VL_OUT64(P_REG,47,0);
+    VL_OUT64(A_REG,47,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
+    // Begin mtask footprint  all: 
+    VL_SIG(saturn_dsp__DOT__RX,31,0);
+    VL_SIG(saturn_dsp__DOT__RY,31,0);
+    VL_SIG64(saturn_dsp__DOT__alu_inst__DOT__INT_RES,49,0);
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code

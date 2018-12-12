@@ -85,8 +85,8 @@ int main(int argc, char **argv, char **env)
 				top->INST_IN = byte_swap;
 			}
 			
-			printf("ADDR:  %08x:  ", top->INST_ADDR-1);
-			printf("FETCH: %08x:  ", top->FETCH);
+			printf("ADDR:  %08x      ", top->INST_ADDR-1);
+			printf("FETCH: %08x      ", top->FETCH);
 			
 			// Operational Instruction...
 			if ( (top->FETCH&0xF0000000)>>28 == 0x0 ) {
@@ -165,7 +165,7 @@ int main(int argc, char **argv, char **env)
 
 				if (top->LOAD_PL)    printf("LOAD_PL, ");
 
-				if (top->ALU_TO_ACL) printf("ALU_TO_ACL, ");
+				if (top->ALU_TO_A)   printf("ALU_TO_A, ");
 				if (top->Y_TO_ACL)   printf("Y_TO_ACL, ");
 
 				if (top->LOAD_ACH)   printf("LOAD_ACH, ");
@@ -193,9 +193,10 @@ int main(int argc, char **argv, char **env)
 
 				if (top->LOAD_PROG_RAM) printf("LOAD_PROG_RAM, ");
 
-				//printf("\n\n");
-				
-				printf("\n                                    ");
+				printf("\n");
+
+				printf("P_REG: %012x  ", top->P_REG);
+				printf("A_REG: %012x  ", top->A_REG);
 				
 				switch (alu_op) {
 					case 0x0: printf("NOP           "); break;

@@ -71,7 +71,7 @@ module saturn_dsp (
 	
 	output logic LOAD_PL,
 	
-	output logic ALU_TO_ACL,
+	output logic ALU_TO_A,
 	output logic Y_TO_ACL,
 	
 	output logic LOAD_ACH,
@@ -98,6 +98,9 @@ module saturn_dsp (
 	output logic LOAD_TOP,
 	
 	output logic LOAD_PROG_RAM,
+	
+	output logic [47:0] P_REG,
+	output logic [47:0] A_REG,
 `endif
 	
 	output logic [7:0] INST_ADDR,	
@@ -141,14 +144,8 @@ logic [5:0] CT3;
 //
 logic [7:0] RA;
 
-
 logic [31:0] RA0;
 logic [31:0] WA0;
-
-
-// Accumulator.
-logic [47:0] A_REG;	// The A register ACH(16),ACL(32).
-
 
 logic [31:0] X_BUS;
 logic [31:0] Y_BUS;
@@ -157,8 +154,15 @@ logic [31:0] Y_BUS;
 logic [31:0] RX;		// Multiplier first input register.
 logic [31:0] RY;		// Multiplier second input register.
 logic [47:0] MUL_RESULT = RX * RY;	// The multiplier itself...
-logic [47:0] P_REG;	// The P register PH(16),PL(32), for latching the multiplier result, and feeding to the ALU "B" input...
 
+`ifdef VERILATOR
+logic [47:0] P_REG;	// The P register PH(16),PL(32), for latching the multiplier result, and feeding to the ALU "B" input...
+`endif
+
+// Accumulator.
+`ifdef VERILATOR
+logic [47:0] A_REG;	// The A register ACH(16),ACL(32).
+`endif
 
 
 // "This is an 8-bit register that stores the lead address. The jump command and
@@ -173,6 +177,12 @@ logic [31:0] FETCH;
 always_ff @(posedge CLOCK) begin
 	FETCH <= INST_IN;
 	INST_ADDR <= INST_ADDR + 1;
+	
+	if (MUL_TO_P) P_REG <= MUL_RESULT;
+	
+	if (CLR_A) A_REG <= 48'h000000000000;
+	if (ALU_TO_A) A_REG <= ALU_RES;
+	
 end
 
 
@@ -193,7 +203,7 @@ alu alu_inst (
 	
 	.OP( FETCH[29:26] ),	// OPERATION.
 	
-	.RESULT( ALU_RES ),	// Duh.
+	.RESULT( ALU_RES ),		// Duh.
 	
 	.S_FLAG( S_FLAG ),
 	.Z_FLAG( Z_FLAG ),
@@ -316,7 +326,7 @@ instruction_decoder instruction_decoder_inst
 	.X_TO_PL(X_TO_PL) ,		// output  X_TO_PL
 	.D1_TO_PL(D1_TO_PL) ,	// output  D1_TO_PL
 	.LOAD_PL(LOAD_PL) ,		// output  LOAD_PL
-	.ALU_TO_ACL(ALU_TO_ACL) ,	// output  ALU_TO_ACL
+	.ALU_TO_A(ALU_TO_A) ,	// output  ALU_TO_A
 	.Y_TO_ACL(Y_TO_ACL) ,	// output  Y_TO_ACL
 	.LOAD_ACH(LOAD_ACH) ,	// output  LOAD_ACH
 	.LOAD_ACL(LOAD_ACL) ,	// output  LOAD_ACL
@@ -511,7 +521,7 @@ module instruction_decoder (
 	
 	output logic LOAD_PL,
 	
-	output logic ALU_TO_ACL,
+	output logic ALU_TO_A,
 	output logic Y_TO_ACL,
 	
 	output logic LOAD_ACH,
@@ -610,7 +620,7 @@ always_comb begin
 	D1_TO_PL <= 1'b0;
 	LOAD_PL <= 1'b0;
 	
-	ALU_TO_ACL <= 1'b0;
+	ALU_TO_A <= 1'b0;
 	Y_TO_ACL <= 1'b0;
 
 	LOAD_ACH <= 1'b0;
@@ -751,7 +761,7 @@ always_comb begin
 		
 		// Handle MOV ALU,A
 		3'b010: begin
-			ALU_TO_ACL <= 1'b1;
+			ALU_TO_A <= 1'b1;
 			LOAD_ACH <= 1'b1;
 			LOAD_ACL <= 1'b1;
 		end
