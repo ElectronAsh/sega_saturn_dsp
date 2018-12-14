@@ -131,10 +131,10 @@ int main(int argc, char **argv, char **env)
 			printf("FETCH: %08x      ", top->FETCH);
 			
 			// Operational Instruction...
-			if ( (top->FETCH&0xF0000000)>>28 == 0x0 ) {
+			if ( (top->FETCH&0xC0000000)>>28 == 0x0 ) {	// Bug fixed. Only need to check the upper two bits of FETCH for this.
 				uint16_t alu_op 	= ((top->FETCH&0x3C000000)>>26)&0xF;
 				uint16_t xbus_op 	= ((top->FETCH&0x03F00000)>>20)&0x3F;
-				uint16_t ybus_op 	= ((top->FETCH&0x000FC000)>>24)&0x3F;
+				uint16_t ybus_op 	= ((top->FETCH&0x000FC000)>>14)&0x3F;
 				uint16_t d1bus_op 	= ((top->FETCH&0x00003FFF)>>0)&0x3FFF;
 
 				printf("ALU_OP: %02x    ", alu_op);
@@ -166,7 +166,7 @@ int main(int argc, char **argv, char **env)
 					case 0xF: printf("RL8           "); break;
 				}
 				
-				switch (xbus_op&0x38) {
+				switch ( (xbus_op&0x38)>>3 ) {
 					case 0x0: printf("NOP           "); break;
 					case 0x1: break;
 					case 0x2: printf("MOV MUL,P     "); break;
@@ -197,7 +197,7 @@ int main(int argc, char **argv, char **env)
 					default: break;
 				}
 				
-				switch (ybus_op&0x38) {
+				switch ( (ybus_op&0x38)>>3 ) {
 					case 0x0: printf("NOP           "); break;
 					case 0x1: printf("CLR A         "); break;
 					case 0x2: printf("MOV ALU,A     "); break;
@@ -307,14 +307,14 @@ int main(int argc, char **argv, char **env)
 					printf("1: ");	// DMA format 1.
 					uint8_t dma_add_mode = (top->FETCH&0x00038000)>>15;
 					uint8_t dma_data_ram = (top->FETCH&0x00000300)>>8;
-					printf("ADD_MODE: %d  ", dma_add_mode);
+					printf("ADD_MODE: %d    ", dma_add_mode);
 					printf("DATA_RAM_ADDR: %d", dma_data_ram);
 				}
 				else {
 					printf("2: ");	// DMA format 2.
 					uint8_t dma_add_mode = (top->FETCH&0x00038000)>>15;
 					uint8_t dma_data_ram = (top->FETCH&0x00000300)>>8;
-					printf("ADD_MODE: %d  ", dma_add_mode);
+					printf("ADD_MODE: %d    ", dma_add_mode);
 					printf("DATA_RAM_ADDR: %d", dma_data_ram);
 				}
 				printf("\n");
@@ -432,17 +432,14 @@ int main(int argc, char **argv, char **env)
 			printf("\n");
 
 			printf("D1BUS: %08x      ", top->D1_BUS);
-			printf("CT0: %02x  ", top->CT0);
-			printf("CT1: %02x  ", top->CT1);
-			printf("CT2: %02x  ", top->CT2);
-			printf("CT3: %02x  ", top->CT3);
-			printf("RA0: %08x  ", top->RA0);
-			printf("WA0: %08x  ", top->WA0);
+			printf("RA0: %08x        ", top->RA0);
+			printf("WA0: %08x        ", top->WA0);
 						
 			printf("\n");
 			
-			printf("MD0_DOUT: %08x  MD1_DOUT: %08x  MD2_DOUT: %08x  MD3_DOUT: %08x\n", top->MD0_DOUT, top->MD1_DOUT, top->MD2_DOUT, top->MD3_DOUT);
-			printf("MD0_WREN: %d         MD1_WREN: %d         MD2_WREN: %d         MD3_WREN: %d\n", top->MD0_WREN, top->MD1_WREN, top->MD2_WREN, top->MD3_WREN);
+			printf("MD0_DOUT: %08x   MD1_DOUT: %08x   MD2_DOUT: %08x   MD3_DOUT: %08x\n", top->MD0_DOUT, top->MD1_DOUT, top->MD2_DOUT, top->MD3_DOUT);
+			printf("MD0_WREN: %d          MD1_WREN: %d          MD2_WREN: %d          MD3_WREN: %d\n", top->MD0_WREN, top->MD1_WREN, top->MD2_WREN, top->MD3_WREN);
+			printf("CT0: %02x              CT1: %02x              CT2: %02x              CT3: %02x\n", top->CT0, top->CT1, top->CT2, top->CT3);
 			
 			printf("\n");
 		
