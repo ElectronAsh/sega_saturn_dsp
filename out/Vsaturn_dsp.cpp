@@ -93,29 +93,27 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_settle__TOP__1\n"); );
     Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->D1_TO_TOP = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->PC_TO_TOP = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->P_TO_PL = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->IMM_TO_LOP = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->D1_TO_LOP = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->PC_TO_D0 = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RA = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->RA_TO_RAMS = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->SHIFT_L16_TO_D1 = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_PROG_RAM = 0U;
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->CLR_A = 0U;
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RY = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -124,7 +122,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RX = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -162,7 +160,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->D1_TO_RX = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -195,7 +193,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->X_TO_RX = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -204,7 +202,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -234,7 +232,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -266,7 +264,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -298,7 +296,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -332,7 +330,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->ACL_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -362,7 +360,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->ACH_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -395,7 +393,135 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD3 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD3 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD3 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD1 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD1 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD0 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD0 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD0 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -496,7 +622,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -617,7 +743,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -646,7 +772,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -677,7 +803,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -710,7 +836,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -741,7 +867,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -853,7 +979,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -968,7 +1094,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD0_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -994,7 +1120,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD1_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1019,7 +1145,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD2_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1044,7 +1170,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD3_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1068,7 +1194,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD0_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1094,7 +1220,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD1_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1124,7 +1250,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD2_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1158,7 +1284,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD3_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1197,7 +1323,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->X_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1211,7 +1337,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->D1_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1242,12 +1368,14 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    vlTOPp->LOAD_PL = 1U;
+		} else {
 		    if ((3U == (7U & (vlTOPp->FETCH 
 				      >> 0x17U)))) {
 			vlTOPp->LOAD_PL = 1U;
@@ -1283,7 +1411,18 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->LOAD_PH = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    vlTOPp->LOAD_PH = 1U;
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->ALU_TO_A = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1297,7 +1436,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->Y_TO_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1336,7 +1475,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_ACH = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1350,7 +1489,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -1391,7 +1530,18 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->CLR_A = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    vlTOPp->CLR_A = 1U;
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1422,7 +1572,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_WA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1451,7 +1601,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_LOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1483,7 +1633,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_TOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1513,7 +1663,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -1522,15 +1672,8 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 		}
 	    }
 	}
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    vlTOPp->MUL_TO_P = 1U;
-		}
-	    }
-	}
     }
-    // ALWAYS at saturn_dsp.sv:395
+    // ALWAYS at saturn_dsp.sv:416
     if ((0x20000000U & vlTOPp->FETCH)) {
 	if ((0x10000000U & vlTOPp->FETCH)) {
 	    if ((0x8000000U & vlTOPp->FETCH)) {
@@ -1611,135 +1754,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD3 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD3 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD1 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD1 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD0 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD0 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD0 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD3_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1785,7 +1800,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD2_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1831,7 +1846,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD1_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1871,7 +1886,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD0_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1906,7 +1921,7 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->IMM_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -1925,22 +1940,6 @@ void Vsaturn_dsp::_settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp) {
 	    }
 	}
     }
-    vlTOPp->D1_BUS = ((IData)(vlTOPp->MD0_TO_D1) ? 
-		      vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
-		      [vlTOPp->CT0] : ((IData)(vlTOPp->MD1_TO_D1)
-				        ? vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
-				       [vlTOPp->CT1]
-				        : ((IData)(vlTOPp->MD2_TO_D1)
-					    ? vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
-					   [vlTOPp->CT2]
-					    : ((IData)(vlTOPp->MD3_TO_D1)
-					        ? vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
-					       [vlTOPp->CT3]
-					        : ((IData)(vlTOPp->IMM_TO_D1)
-						    ? 
-						   (0xffU 
-						    & vlTOPp->FETCH)
-						    : 0U)))));
 }
 
 VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict vlSymsp) {
@@ -1953,57 +1952,17 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
     VL_SIG8(__Vdly__CT2,5,0);
     VL_SIG8(__Vdly__CT3,5,0);
     VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,7,0);
     VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,0,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3,7,0);
     VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,7,0);
     VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,0,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3,7,0);
     VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,7,0);
     VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,0,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3,7,0);
     VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,7,0);
     VL_SIG8(__Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,0,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2,7,0);
-    VL_SIG8(__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3,5,0);
-    VL_SIG8(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3,4,0);
-    VL_SIG8(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3,7,0);
+    VL_SIG(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0,31,0);
+    VL_SIG(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0,31,0);
+    VL_SIG(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0,31,0);
+    VL_SIG(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0,31,0);
     // Body
     __Vdly__CT3 = vlTOPp->CT3;
     __Vdly__CT2 = vlTOPp->CT2;
@@ -2013,259 +1972,149 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
     __Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 = 0U;
     __Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 = 0U;
     __Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 = 0U;
-    // ALWAYS at saturn_dsp.sv:197
-    vlTOPp->INST_ADDR = (0xffU & ((IData)(1U) + (IData)(vlTOPp->INST_ADDR)));
-    // ALWAYS at saturn_dsp.sv:197
-    if (vlTOPp->MUL_TO_P) {
-	vlTOPp->P_REG = (VL_ULL(0xffffffffffff) & ((QData)((IData)(vlTOPp->saturn_dsp__DOT__RX)) 
-						   * (QData)((IData)(vlTOPp->saturn_dsp__DOT__RY))));
+    // ALWAYS at saturn_dsp.sv:205
+    vlTOPp->INST_ADDR = (0xffU & ((IData)(vlTOPp->RESET_N)
+				   ? ((IData)(1U) + (IData)(vlTOPp->INST_ADDR))
+				   : 0U));
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->MUL_TO_P) {
+	    vlTOPp->P_REG = (VL_ULL(0xffffffffffff) 
+			     & ((QData)((IData)(vlTOPp->saturn_dsp__DOT__RX)) 
+				* (QData)((IData)(vlTOPp->saturn_dsp__DOT__RY))));
+	}
     }
-    // ALWAYS at saturn_dsp.sv:197
-    if (vlTOPp->CLR_A) {
-	vlTOPp->A_REG = VL_ULL(0);
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->LOAD_WA0) {
+	    vlTOPp->WA0 = vlTOPp->D1_BUS;
+	}
     }
-    if (vlTOPp->ALU_TO_A) {
-	vlTOPp->A_REG = (VL_ULL(0xffffffffffff) & vlTOPp->saturn_dsp__DOT__alu_inst__DOT__INT_RES);
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->LOAD_RA0) {
+	    vlTOPp->RA0 = vlTOPp->D1_BUS;
+	}
     }
-    // ALWAYS at saturn_dsp.sv:197
-    if (vlTOPp->LOAD_CT3) {
-	__Vdly__CT3 = (0x3fU & vlTOPp->D1_BUS);
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->CLR_A) {
+	    vlTOPp->A_REG = VL_ULL(0);
+	}
+	if (vlTOPp->ALU_TO_A) {
+	    vlTOPp->A_REG = (VL_ULL(0xffffffffffff) 
+			     & vlTOPp->saturn_dsp__DOT__alu_inst__DOT__INT_RES);
+	}
     }
-    if (vlTOPp->INC_CT3) {
-	__Vdly__CT3 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT3)));
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->LOAD_CT3) {
+	    __Vdly__CT3 = (0x3fU & vlTOPp->D1_BUS);
+	}
+	if (vlTOPp->INC_CT3) {
+	    __Vdly__CT3 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT3)));
+	}
     }
-    // ALWAYS at saturn_dsp.sv:197
-    if (vlTOPp->LOAD_CT2) {
-	__Vdly__CT2 = (0x3fU & vlTOPp->D1_BUS);
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->LOAD_CT2) {
+	    __Vdly__CT2 = (0x3fU & vlTOPp->D1_BUS);
+	}
+	if (vlTOPp->INC_CT2) {
+	    __Vdly__CT2 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT2)));
+	}
     }
-    if (vlTOPp->INC_CT2) {
-	__Vdly__CT2 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT2)));
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->LOAD_CT1) {
+	    __Vdly__CT1 = (0x3fU & vlTOPp->D1_BUS);
+	}
+	if (vlTOPp->INC_CT1) {
+	    __Vdly__CT1 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT1)));
+	}
     }
-    // ALWAYS at saturn_dsp.sv:197
-    if (vlTOPp->LOAD_CT1) {
-	__Vdly__CT1 = (0x3fU & vlTOPp->D1_BUS);
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	if (vlTOPp->LOAD_CT0) {
+	    __Vdly__CT0 = (0x3fU & vlTOPp->D1_BUS);
+	}
+	if (vlTOPp->INC_CT0) {
+	    __Vdly__CT0 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT0)));
+	}
     }
-    if (vlTOPp->INC_CT1) {
-	__Vdly__CT1 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT1)));
-    }
-    // ALWAYS at saturn_dsp.sv:197
-    if (vlTOPp->LOAD_CT0) {
-	__Vdly__CT0 = (0x3fU & vlTOPp->D1_BUS);
-    }
-    if (vlTOPp->INC_CT0) {
-	__Vdly__CT0 = (0x3fU & ((IData)(1U) + (IData)(vlTOPp->CT0)));
-    }
-    // ALWAYS at saturn_dsp.sv:1001
-    if (vlTOPp->LOAD_MD3) {
+    // ALWAYS at saturn_dsp.sv:1025
+    if (((IData)(vlTOPp->LOAD_MD3) | (IData)(vlTOPp->saturn_dsp__DOT__D0_MD3_WRITE))) {
 	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
+	    = ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD3_WRITE)
+	        ? vlTOPp->D0_BUS_IN : vlTOPp->D1_BUS);
 	__Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 = 1U;
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 = 0x18U;
 	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0 
-	    = vlTOPp->CT3;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1 = 0x10U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1 
-	    = vlTOPp->CT3;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2 = 8U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2 
-	    = vlTOPp->CT3;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD3_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3 = 0U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3 
-	    = vlTOPp->CT3;
+	    = vlTOPp->saturn_dsp__DOT__MD3_ADDR;
     }
-    // ALWAYS at saturn_dsp.sv:1001
-    if (vlTOPp->LOAD_MD2) {
+    // ALWAYS at saturn_dsp.sv:1025
+    if (((IData)(vlTOPp->LOAD_MD2) | (IData)(vlTOPp->saturn_dsp__DOT__D0_MD2_WRITE))) {
 	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
+	    = ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD2_WRITE)
+	        ? vlTOPp->D0_BUS_IN : vlTOPp->D1_BUS);
 	__Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 = 1U;
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 = 0x18U;
 	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0 
-	    = vlTOPp->CT2;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1 = 0x10U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1 
-	    = vlTOPp->CT2;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2 = 8U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2 
-	    = vlTOPp->CT2;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD2_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3 = 0U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3 
-	    = vlTOPp->CT2;
+	    = vlTOPp->saturn_dsp__DOT__MD2_ADDR;
     }
-    // ALWAYS at saturn_dsp.sv:1001
-    if (vlTOPp->LOAD_MD1) {
+    // ALWAYS at saturn_dsp.sv:1025
+    if (((IData)(vlTOPp->LOAD_MD1) | (IData)(vlTOPp->saturn_dsp__DOT__D0_MD1_WRITE))) {
 	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
+	    = ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD1_WRITE)
+	        ? vlTOPp->D0_BUS_IN : vlTOPp->D1_BUS);
 	__Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 = 1U;
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 = 0x18U;
 	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0 
-	    = vlTOPp->CT1;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1 = 0x10U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1 
-	    = vlTOPp->CT1;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2 = 8U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2 
-	    = vlTOPp->CT1;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD1_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3 = 0U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3 
-	    = vlTOPp->CT1;
+	    = vlTOPp->saturn_dsp__DOT__MD1_ADDR;
     }
-    // ALWAYS at saturn_dsp.sv:1001
-    if (vlTOPp->LOAD_MD0) {
+    // ALWAYS at saturn_dsp.sv:1025
+    if (((IData)(vlTOPp->LOAD_MD0) | (IData)(vlTOPp->saturn_dsp__DOT__D0_MD0_WRITE))) {
 	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
+	    = ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD0_WRITE)
+	        ? vlTOPp->D0_BUS_IN : vlTOPp->D1_BUS);
 	__Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 = 1U;
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 = 0x18U;
 	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0 
-	    = vlTOPp->CT0;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1 = 0x10U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1 
-	    = vlTOPp->CT0;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2 = 8U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2 
-	    = vlTOPp->CT0;
-	__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3 
-	    = (0xffU & vlTOPp->saturn_dsp__DOT__MD0_DI);
-	__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3 = 0U;
-	__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3 
-	    = vlTOPp->CT0;
+	    = vlTOPp->saturn_dsp__DOT__MD0_ADDR;
     }
-    // ALWAYS at saturn_dsp.sv:197
-    vlTOPp->FETCH = vlTOPp->INST_IN;
+    // ALWAYS at saturn_dsp.sv:205
+    if (vlTOPp->RESET_N) {
+	vlTOPp->FETCH = vlTOPp->INST_IN;
+    }
     vlTOPp->CT3 = __Vdly__CT3;
-    // ALWAYSPOST at saturn_dsp.sv:1003
+    vlTOPp->CT2 = __Vdly__CT2;
+    vlTOPp->CT1 = __Vdly__CT1;
+    vlTOPp->CT0 = __Vdly__CT0;
+    // ALWAYSPOST at saturn_dsp.sv:1025
     if (__Vdlyvset__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0) {
 	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v1)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v2)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v3)));
+	    = __Vdlyvval__saturn_dsp__DOT__data_ram_md3__DOT__RAM__v0;
     }
-    vlTOPp->CT2 = __Vdly__CT2;
-    // ALWAYSPOST at saturn_dsp.sv:1003
+    // ALWAYSPOST at saturn_dsp.sv:1025
     if (__Vdlyvset__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0) {
 	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v1)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v2)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v3)));
+	    = __Vdlyvval__saturn_dsp__DOT__data_ram_md2__DOT__RAM__v0;
     }
-    vlTOPp->CT1 = __Vdly__CT1;
-    // ALWAYSPOST at saturn_dsp.sv:1003
+    // ALWAYSPOST at saturn_dsp.sv:1025
     if (__Vdlyvset__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0) {
 	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v1)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v2)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v3)));
+	    = __Vdlyvval__saturn_dsp__DOT__data_ram_md1__DOT__RAM__v0;
     }
-    vlTOPp->CT0 = __Vdly__CT0;
-    // ALWAYSPOST at saturn_dsp.sv:1003
+    // ALWAYSPOST at saturn_dsp.sv:1025
     if (__Vdlyvset__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0) {
 	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v1)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v2)));
-	vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3] 
-	    = (((~ ((IData)(0xffU) << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3))) 
-		& vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
-		[__Vdlyvdim0__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3]) 
-	       | ((IData)(__Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3) 
-		  << (IData)(__Vdlyvlsb__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v3)));
+	    = __Vdlyvval__saturn_dsp__DOT__data_ram_md0__DOT__RAM__v0;
     }
-    // ALWAYS at saturn_dsp.sv:570
+    vlTOPp->saturn_dsp__DOT__MD3_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD3_ADDR];
+    vlTOPp->saturn_dsp__DOT__MD2_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD2_ADDR];
+    vlTOPp->saturn_dsp__DOT__MD1_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD1_ADDR];
+    vlTOPp->saturn_dsp__DOT__MD0_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD0_ADDR];
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RY = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -2274,7 +2123,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RX = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -2312,7 +2161,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->D1_TO_RX = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2345,7 +2194,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->X_TO_RX = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -2354,7 +2203,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2384,7 +2233,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2416,7 +2265,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2448,7 +2297,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_MD0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2482,7 +2331,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->ACL_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2512,7 +2361,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->ACH_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2545,7 +2394,135 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD3 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD3 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD3 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD2 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((0x200U & vlTOPp->FETCH)) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD2 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((0x200U & vlTOPp->FETCH)) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD2 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD1 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((0x100U & vlTOPp->FETCH)) {
+				vlTOPp->D1_TO_MD1 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((0x100U & vlTOPp->FETCH)) {
+				    vlTOPp->D1_TO_MD1 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->D1_TO_MD0 = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
+	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 9U)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 8U)))) {
+				vlTOPp->D1_TO_MD0 = 1U;
+			    }
+			}
+		    }
+		}
+	    } else {
+		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
+		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
+			if ((1U & (~ (vlTOPp->FETCH 
+				      >> 0xaU)))) {
+			    if ((1U & (~ (vlTOPp->FETCH 
+					  >> 9U)))) {
+				if ((1U & (~ (vlTOPp->FETCH 
+					      >> 8U)))) {
+				    vlTOPp->D1_TO_MD0 = 1U;
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -2646,7 +2623,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -2767,7 +2744,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2796,7 +2773,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2827,7 +2804,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2860,7 +2837,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_CT1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -2891,7 +2868,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT2 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3003,7 +2980,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->INC_CT3 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3118,7 +3095,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD0_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3144,7 +3121,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD1_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3169,7 +3146,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD2_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3194,7 +3171,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD3_TO_X = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3218,7 +3195,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD0_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3244,7 +3221,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD1_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3274,7 +3251,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD2_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3308,7 +3285,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD3_TO_Y = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3347,7 +3324,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->X_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3361,7 +3338,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->D1_TO_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3392,12 +3369,14 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_PL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
-		if ((2U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    vlTOPp->LOAD_PL = 1U;
+		} else {
 		    if ((3U == (7U & (vlTOPp->FETCH 
 				      >> 0x17U)))) {
 			vlTOPp->LOAD_PL = 1U;
@@ -3433,7 +3412,18 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->LOAD_PH = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		if ((2U == (7U & (vlTOPp->FETCH >> 0x17U)))) {
+		    vlTOPp->LOAD_PH = 1U;
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->ALU_TO_A = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3447,7 +3437,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->Y_TO_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3486,7 +3476,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_ACH = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3500,7 +3490,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_ACL = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
@@ -3541,7 +3531,18 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
+    vlTOPp->CLR_A = 0U;
+    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
+	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
+		    vlTOPp->CLR_A = 1U;
+		}
+	    }
+	}
+    }
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_RA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3572,7 +3573,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_WA0 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3601,7 +3602,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_LOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3633,7 +3634,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->LOAD_TOP = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3663,7 +3664,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
 	    if ((4U != (7U & (vlTOPp->FETCH >> 0x17U)))) {
@@ -3672,15 +3673,8 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 		}
 	    }
 	}
-	if ((0U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-	    if ((4U != (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		if ((1U == (7U & (vlTOPp->FETCH >> 0x11U)))) {
-		    vlTOPp->MUL_TO_P = 1U;
-		}
-	    }
-	}
     }
-    // ALWAYS at saturn_dsp.sv:395
+    // ALWAYS at saturn_dsp.sv:416
     if ((0x20000000U & vlTOPp->FETCH)) {
 	if ((0x10000000U & vlTOPp->FETCH)) {
 	    if ((0x8000000U & vlTOPp->FETCH)) {
@@ -3761,135 +3755,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD3 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD3 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD3 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD2 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((0x200U & vlTOPp->FETCH)) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD2 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((0x200U & vlTOPp->FETCH)) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD2 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD1 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((0x100U & vlTOPp->FETCH)) {
-				vlTOPp->D1_TO_MD1 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((0x100U & vlTOPp->FETCH)) {
-				    vlTOPp->D1_TO_MD1 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
-    vlTOPp->D1_TO_MD0 = 0U;
-    if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
-	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
-	    if ((1U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xaU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 9U)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 8U)))) {
-				vlTOPp->D1_TO_MD0 = 1U;
-			    }
-			}
-		    }
-		}
-	    } else {
-		if ((3U == (3U & (vlTOPp->FETCH >> 0xcU)))) {
-		    if ((1U & (~ (vlTOPp->FETCH >> 0xbU)))) {
-			if ((1U & (~ (vlTOPp->FETCH 
-				      >> 0xaU)))) {
-			    if ((1U & (~ (vlTOPp->FETCH 
-					  >> 9U)))) {
-				if ((1U & (~ (vlTOPp->FETCH 
-					      >> 8U)))) {
-				    vlTOPp->D1_TO_MD0 = 1U;
-				}
-			    }
-			}
-		    }
-		}
-	    }
-	}
-    }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD3_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3935,7 +3801,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD2_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -3981,7 +3847,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD1_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -4021,7 +3887,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->MD0_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -4056,7 +3922,7 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    // ALWAYS at saturn_dsp.sv:570
+    // ALWAYS at saturn_dsp.sv:592
     vlTOPp->IMM_TO_D1 = 0U;
     if ((0U == (3U & (vlTOPp->FETCH >> 0x1eU)))) {
 	if ((0U != (3U & (vlTOPp->FETCH >> 0xcU)))) {
@@ -4075,44 +3941,114 @@ VL_INLINE_OPT void Vsaturn_dsp::_sequent__TOP__2(Vsaturn_dsp__Syms* __restrict v
 	    }
 	}
     }
-    vlTOPp->D1_BUS = ((IData)(vlTOPp->MD0_TO_D1) ? 
-		      vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
-		      [vlTOPp->CT0] : ((IData)(vlTOPp->MD1_TO_D1)
-				        ? vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
-				       [vlTOPp->CT1]
-				        : ((IData)(vlTOPp->MD2_TO_D1)
-					    ? vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
-					   [vlTOPp->CT2]
-					    : ((IData)(vlTOPp->MD3_TO_D1)
-					        ? vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
-					       [vlTOPp->CT3]
-					        : ((IData)(vlTOPp->IMM_TO_D1)
-						    ? 
-						   (0xffU 
-						    & vlTOPp->FETCH)
-						    : 0U)))));
+    vlTOPp->D1_BUS = ((IData)(vlTOPp->MD0_TO_D1) ? vlTOPp->saturn_dsp__DOT__MD0_DOUT
+		       : ((IData)(vlTOPp->MD1_TO_D1)
+			   ? vlTOPp->saturn_dsp__DOT__MD1_DOUT
+			   : ((IData)(vlTOPp->MD2_TO_D1)
+			       ? vlTOPp->saturn_dsp__DOT__MD2_DOUT
+			       : ((IData)(vlTOPp->MD3_TO_D1)
+				   ? vlTOPp->saturn_dsp__DOT__MD3_DOUT
+				   : ((IData)(vlTOPp->IMM_TO_D1)
+				       ? (0xffU & vlTOPp->FETCH)
+				       : 0U)))));
 }
 
 void Vsaturn_dsp::_initial__TOP__3(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_initial__TOP__3\n"); );
     Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    // INITIAL at saturn_dsp.sv:245
-    vlTOPp->saturn_dsp__DOT__MD0_DI = ((IData)(vlTOPp->D1_TO_MD0)
-				        ? vlTOPp->D1_BUS
-				        : vlTOPp->D0_BUS_IN);
-    // INITIAL at saturn_dsp.sv:260
-    vlTOPp->saturn_dsp__DOT__MD1_DI = ((IData)(vlTOPp->D1_TO_MD1)
-				        ? vlTOPp->D1_BUS
-				        : vlTOPp->D0_BUS_IN);
-    // INITIAL at saturn_dsp.sv:275
-    vlTOPp->saturn_dsp__DOT__MD2_DI = ((IData)(vlTOPp->D1_TO_MD2)
-				        ? vlTOPp->D1_BUS
-				        : vlTOPp->D0_BUS_IN);
-    // INITIAL at saturn_dsp.sv:290
-    vlTOPp->saturn_dsp__DOT__MD3_DI = ((IData)(vlTOPp->D1_TO_MD3)
-				        ? vlTOPp->D1_BUS
-				        : vlTOPp->D0_BUS_IN);
+    // INITIAL at saturn_dsp.sv:265
+    vlTOPp->saturn_dsp__DOT__D0_MD0_WRITE = ((IData)(vlTOPp->D0_WRITE) 
+					     & (0U 
+						== 
+						(3U 
+						 & ((IData)(vlTOPp->D0_ADDR) 
+						    >> 6U))));
+    // INITIAL at saturn_dsp.sv:280
+    vlTOPp->saturn_dsp__DOT__D0_MD1_WRITE = ((IData)(vlTOPp->D0_WRITE) 
+					     & (1U 
+						== 
+						(3U 
+						 & ((IData)(vlTOPp->D0_ADDR) 
+						    >> 6U))));
+    // INITIAL at saturn_dsp.sv:295
+    vlTOPp->saturn_dsp__DOT__D0_MD2_WRITE = ((IData)(vlTOPp->D0_WRITE) 
+					     & (2U 
+						== 
+						(3U 
+						 & ((IData)(vlTOPp->D0_ADDR) 
+						    >> 6U))));
+    // INITIAL at saturn_dsp.sv:310
+    vlTOPp->saturn_dsp__DOT__D0_MD3_WRITE = ((IData)(vlTOPp->D0_WRITE) 
+					     & (3U 
+						== 
+						(3U 
+						 & ((IData)(vlTOPp->D0_ADDR) 
+						    >> 6U))));
+    // INITIAL at saturn_dsp.sv:266
+    vlTOPp->saturn_dsp__DOT__MD0_ADDR = (0x3fU & ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD0_WRITE)
+						   ? (IData)(vlTOPp->D0_ADDR)
+						   : (IData)(vlTOPp->CT0)));
+    // INITIAL at saturn_dsp.sv:281
+    vlTOPp->saturn_dsp__DOT__MD1_ADDR = (0x3fU & ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD1_WRITE)
+						   ? (IData)(vlTOPp->D0_ADDR)
+						   : (IData)(vlTOPp->CT1)));
+    // INITIAL at saturn_dsp.sv:296
+    vlTOPp->saturn_dsp__DOT__MD2_ADDR = (0x3fU & ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD2_WRITE)
+						   ? (IData)(vlTOPp->D0_ADDR)
+						   : (IData)(vlTOPp->CT2)));
+    // INITIAL at saturn_dsp.sv:311
+    vlTOPp->saturn_dsp__DOT__MD3_ADDR = (0x3fU & ((IData)(vlTOPp->saturn_dsp__DOT__D0_MD3_WRITE)
+						   ? (IData)(vlTOPp->D0_ADDR)
+						   : (IData)(vlTOPp->CT3)));
+}
+
+VL_INLINE_OPT void Vsaturn_dsp::_combo__TOP__4(Vsaturn_dsp__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_combo__TOP__4\n"); );
+    Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->D0_BUS_OUT = ((0U == (3U & ((IData)(vlTOPp->D0_ADDR) 
+					>> 6U))) ? vlTOPp->saturn_dsp__DOT__MD0_DOUT
+			   : ((1U == (3U & ((IData)(vlTOPp->D0_ADDR) 
+					    >> 6U)))
+			       ? vlTOPp->saturn_dsp__DOT__MD1_DOUT
+			       : ((2U == (3U & ((IData)(vlTOPp->D0_ADDR) 
+						>> 6U)))
+				   ? vlTOPp->saturn_dsp__DOT__MD2_DOUT
+				   : vlTOPp->saturn_dsp__DOT__MD3_DOUT)));
+}
+
+void Vsaturn_dsp::_settle__TOP__5(Vsaturn_dsp__Syms* __restrict vlSymsp) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_settle__TOP__5\n"); );
+    Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    // Body
+    vlTOPp->saturn_dsp__DOT__MD0_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md0__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD0_ADDR];
+    vlTOPp->saturn_dsp__DOT__MD1_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md1__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD1_ADDR];
+    vlTOPp->saturn_dsp__DOT__MD2_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md2__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD2_ADDR];
+    vlTOPp->saturn_dsp__DOT__MD3_DOUT = vlTOPp->saturn_dsp__DOT__data_ram_md3__DOT__RAM
+	[vlTOPp->saturn_dsp__DOT__MD3_ADDR];
+    vlTOPp->D0_BUS_OUT = ((0U == (3U & ((IData)(vlTOPp->D0_ADDR) 
+					>> 6U))) ? vlTOPp->saturn_dsp__DOT__MD0_DOUT
+			   : ((1U == (3U & ((IData)(vlTOPp->D0_ADDR) 
+					    >> 6U)))
+			       ? vlTOPp->saturn_dsp__DOT__MD1_DOUT
+			       : ((2U == (3U & ((IData)(vlTOPp->D0_ADDR) 
+						>> 6U)))
+				   ? vlTOPp->saturn_dsp__DOT__MD2_DOUT
+				   : vlTOPp->saturn_dsp__DOT__MD3_DOUT)));
+    vlTOPp->D1_BUS = ((IData)(vlTOPp->MD0_TO_D1) ? vlTOPp->saturn_dsp__DOT__MD0_DOUT
+		       : ((IData)(vlTOPp->MD1_TO_D1)
+			   ? vlTOPp->saturn_dsp__DOT__MD1_DOUT
+			   : ((IData)(vlTOPp->MD2_TO_D1)
+			       ? vlTOPp->saturn_dsp__DOT__MD2_DOUT
+			       : ((IData)(vlTOPp->MD3_TO_D1)
+				   ? vlTOPp->saturn_dsp__DOT__MD3_DOUT
+				   : ((IData)(vlTOPp->IMM_TO_D1)
+				       ? (0xffU & vlTOPp->FETCH)
+				       : 0U)))));
 }
 
 void Vsaturn_dsp::_eval(Vsaturn_dsp__Syms* __restrict vlSymsp) {
@@ -4122,6 +4058,7 @@ void Vsaturn_dsp::_eval(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     if (((IData)(vlTOPp->CLOCK) & (~ (IData)(vlTOPp->__Vclklast__TOP__CLOCK)))) {
 	vlTOPp->_sequent__TOP__2(vlSymsp);
     }
+    vlTOPp->_combo__TOP__4(vlSymsp);
     // Final
     vlTOPp->__Vclklast__TOP__CLOCK = vlTOPp->CLOCK;
 }
@@ -4146,6 +4083,7 @@ void Vsaturn_dsp::_eval_settle(Vsaturn_dsp__Syms* __restrict vlSymsp) {
     Vsaturn_dsp* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_settle__TOP__1(vlSymsp);
+    vlTOPp->_settle__TOP__5(vlSymsp);
 }
 
 VL_INLINE_OPT QData Vsaturn_dsp::_change_request(Vsaturn_dsp__Syms* __restrict vlSymsp) {
@@ -4163,6 +4101,10 @@ void Vsaturn_dsp::_eval_debug_assertions() {
     // Body
     if (VL_UNLIKELY((CLOCK & 0xfeU))) {
 	Verilated::overWidthError("CLOCK");}
+    if (VL_UNLIKELY((RESET_N & 0xfeU))) {
+	Verilated::overWidthError("RESET_N");}
+    if (VL_UNLIKELY((D0_WRITE & 0xfeU))) {
+	Verilated::overWidthError("D0_WRITE");}
 }
 #endif // VL_DEBUG
 
@@ -4170,8 +4112,11 @@ void Vsaturn_dsp::_ctor_var_reset() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vsaturn_dsp::_ctor_var_reset\n"); );
     // Body
     CLOCK = VL_RAND_RESET_I(1);
+    RESET_N = VL_RAND_RESET_I(1);
     D0_BUS_IN = VL_RAND_RESET_I(32);
     D0_BUS_OUT = VL_RAND_RESET_I(32);
+    D0_ADDR = VL_RAND_RESET_I(8);
+    D0_WRITE = VL_RAND_RESET_I(1);
     FETCH = VL_RAND_RESET_I(32);
     LOAD_CT0 = VL_RAND_RESET_I(1);
     LOAD_CT1 = VL_RAND_RESET_I(1);
@@ -4214,6 +4159,7 @@ void Vsaturn_dsp::_ctor_var_reset() {
     X_TO_PL = VL_RAND_RESET_I(1);
     D1_TO_PL = VL_RAND_RESET_I(1);
     LOAD_PL = VL_RAND_RESET_I(1);
+    LOAD_PH = VL_RAND_RESET_I(1);
     ALU_TO_A = VL_RAND_RESET_I(1);
     Y_TO_ACL = VL_RAND_RESET_I(1);
     LOAD_ACH = VL_RAND_RESET_I(1);
@@ -4233,19 +4179,29 @@ void Vsaturn_dsp::_ctor_var_reset() {
     LOAD_PROG_RAM = VL_RAND_RESET_I(1);
     P_REG = VL_RAND_RESET_Q(48);
     A_REG = VL_RAND_RESET_Q(48);
+    D1_BUS = VL_RAND_RESET_I(32);
     CT0 = VL_RAND_RESET_I(6);
     CT1 = VL_RAND_RESET_I(6);
     CT2 = VL_RAND_RESET_I(6);
     CT3 = VL_RAND_RESET_I(6);
-    D1_BUS = VL_RAND_RESET_I(32);
+    RA0 = VL_RAND_RESET_I(32);
+    WA0 = VL_RAND_RESET_I(32);
     INST_ADDR = VL_RAND_RESET_I(8);
     INST_IN = VL_RAND_RESET_I(32);
     saturn_dsp__DOT__RX = VL_RAND_RESET_I(32);
     saturn_dsp__DOT__RY = VL_RAND_RESET_I(32);
-    saturn_dsp__DOT__MD0_DI = VL_RAND_RESET_I(32);
-    saturn_dsp__DOT__MD1_DI = VL_RAND_RESET_I(32);
-    saturn_dsp__DOT__MD2_DI = VL_RAND_RESET_I(32);
-    saturn_dsp__DOT__MD3_DI = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__D0_MD0_WRITE = VL_RAND_RESET_I(1);
+    saturn_dsp__DOT__MD0_ADDR = VL_RAND_RESET_I(6);
+    saturn_dsp__DOT__MD0_DOUT = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__D0_MD1_WRITE = VL_RAND_RESET_I(1);
+    saturn_dsp__DOT__MD1_ADDR = VL_RAND_RESET_I(6);
+    saturn_dsp__DOT__MD1_DOUT = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__D0_MD2_WRITE = VL_RAND_RESET_I(1);
+    saturn_dsp__DOT__MD2_ADDR = VL_RAND_RESET_I(6);
+    saturn_dsp__DOT__MD2_DOUT = VL_RAND_RESET_I(32);
+    saturn_dsp__DOT__D0_MD3_WRITE = VL_RAND_RESET_I(1);
+    saturn_dsp__DOT__MD3_ADDR = VL_RAND_RESET_I(6);
+    saturn_dsp__DOT__MD3_DOUT = VL_RAND_RESET_I(32);
     saturn_dsp__DOT__alu_inst__DOT__INT_RES = VL_RAND_RESET_Q(50);
     { int __Vi0=0; for (; __Vi0<64; ++__Vi0) {
 	    saturn_dsp__DOT__data_ram_md0__DOT__RAM[__Vi0] = VL_RAND_RESET_I(32);

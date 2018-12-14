@@ -9,6 +9,12 @@
 unsigned int rom_size = 256;	// 256 Words (32-bit wide).
 uint32_t *rom_ptr = (uint32_t *) malloc(rom_size);
 
+unsigned int ram_size = 256;	// 256 Words (32-bit wide).
+uint32_t *ram_ptr = (uint32_t *) malloc(ram_size);
+
+
+unsigned int file_size;
+
 int main_time;
 
 int hcount = 0;
@@ -29,6 +35,10 @@ int main(int argc, char **argv, char **env)
 	int vga_g;
 	int vga_b;
 
+	uint32_t ram_addr = 0;
+	
+	uint32_t byte_swap;
+			
 	Verilated::commandArgs(argc, argv);
 
 	// Init top verilog instance
@@ -44,26 +54,61 @@ int main(int argc, char **argv, char **env)
 		printf("\nDSP Program RAM file loaded OK.\n");
 	}
 	else {
-		printf("\nDSP Program RAM file not found!\n\n");
+		printf("\nDSP Program RAM file not found!\n");
 		return 0;
 	};
-
-	unsigned int file_size;
 	fseek(romfile, 0L, SEEK_END);
 	file_size = ftell(romfile);
 	fseek(romfile, 0L, SEEK_SET);
+	fread(rom_ptr, 1, file_size, romfile);	// Read the whole PROGRAM ROM file into RAM.
 	
-	fread(rom_ptr, 1, file_size, romfile);	// Read the whole ROM file into RAM.
 	
+	FILE *ramfile;
+	ramfile = fopen("sonicr_intro_dsp_dataram.bin","r");
+	if (ramfile!=NULL) {
+		printf("\nDSP Data RAM file loaded OK.\n\n");
+	}
+	else {
+		printf("\nDSP Data RAM file not found!\n\n");
+		return 0;
+	};
+	fseek(ramfile, 0L, SEEK_END);
+	file_size = ftell(ramfile);
+	fseek(ramfile, 0L, SEEK_SET);
+	fread(ram_ptr, 1, file_size, ramfile);	// Read the whole DATA RAM file into RAM.
+
 	
 	//while (!Verilated::gotFinish()) {
-	while ( main_time < 20 ) {		// Only run for a short time.
+	while ( main_time < 1024 ) {	// Only run for a short time.
 		if (main_time < 8) {
-			//top->reset_n = 0;		// Assert reset
+			top->RESET_N = 0;		// Assert reset
 		}
-		if (main_time == 10) {
-			//top->reset_n = 1;   	// Deassert reset
+		if (main_time == 512) {
+			top->RESET_N = 1;   	// Deassert reset
 		}
+		
+		if (ram_addr<256) {
+			
+			if ((main_time & 1) == 1) {
+				byte_swap = (ram_ptr[ram_addr]&0xFF000000)>>24 |
+							(ram_ptr[ram_addr]&0x00FF0000)>>8 |
+							(ram_ptr[ram_addr]&0x0000FF00)<<8 |
+							(ram_ptr[ram_addr]&0x000000FF)<<24;
+							
+				printf("ram_addr: %02x  ram_data: %08x\n", ram_addr, byte_swap);
+
+				top->D0_ADDR = ram_addr;				
+				top->D0_BUS_IN = byte_swap;
+				top->D0_WRITE = 1;
+			}
+			
+			if ((main_time & 1) == 0) {
+				top->D0_WRITE = 0;
+				ram_addr++;
+			}
+		}
+		
+		
 		if ((main_time & 1) == 1) {
 			top->CLOCK = 1;
 			//top->pix_clk = 1;       // Toggle clock
@@ -74,8 +119,6 @@ int main(int argc, char **argv, char **env)
 			//top->pix_clk = 0;
 			//top->sys_clk = 0;
 
-			uint32_t byte_swap;
-			
 			if (top->INST_ADDR < rom_size) {
 				byte_swap = (rom_ptr[top->INST_ADDR]&0xFF000000)>>24 |
 							(rom_ptr[top->INST_ADDR]&0x00FF0000)>>8 |
@@ -95,94 +138,10 @@ int main(int argc, char **argv, char **env)
 				uint16_t ybus_op 	= ((top->FETCH&0x000FC000)>>24)&0x3F;
 				uint16_t d1bus_op 	= ((top->FETCH&0x00003FFF)>>0)&0x3FFF;
 
-				printf("ALU_OP:  %02x   ", alu_op);
+				printf("ALU_OP: %02x    ", alu_op);
 				printf("XBUS_OP: %02x   ", xbus_op);
 				printf("YBUS_OP: %02x   ", ybus_op);
-				printf("D1_OP:   %04x   ", d1bus_op);
-				
-				// Control signals...
-				if (top->MD0_TO_X)   printf("MD0_TO_X,  ");
-				if (top->MD1_TO_X)   printf("MD1_TO_X,  ");
-				if (top->MD2_TO_X)   printf("MD2_TO_X,  ");
-				if (top->MD3_TO_X)   printf("MD3_TO_X,  ");
-
-				if (top->MD0_TO_Y)   printf("MD0_TO_Y,  ");
-				if (top->MD1_TO_Y)   printf("MD1_TO_Y,  ");
-				if (top->MD2_TO_Y)   printf("MD2_TO_Y,  ");
-				if (top->MD3_TO_Y)   printf("MD3_TO_Y,  ");
-
-				if (top->MD0_TO_D1)  printf("MD0_TO_D1, ");
-				if (top->MD1_TO_D1)  printf("MD1_TO_D1, ");
-				if (top->MD2_TO_D1)  printf("MD2_TO_D1, ");
-				if (top->MD3_TO_D1)  printf("MD3_TO_D1, ");
-
-				if (top->D1_TO_MD0)  printf("D1_TO_MD0, ");
-				if (top->D1_TO_MD1)  printf("D1_TO_MD1, ");
-				if (top->D1_TO_MD2)  printf("D1_TO_MD2, ");
-				if (top->D1_TO_MD3)  printf("D1_TO_MD3, ");
-
-				if (top->ACH_TO_D1)  printf("ACH_TO_D1, ");
-				if (top->ACL_TO_D1)  printf("ACL_TO_D1, ");
-
-				if (top->X_TO_RX)    printf("X_TO_RX, ");
-				if (top->D1_TO_RX)   printf("D1_TO_RX, ");
-
-				if (top->LOAD_RX)    printf("LOAD_RX, ");
-				if (top->LOAD_RY)    printf("LOAD_RY, ");
-
-				if (top->PC_TO_TOP)  printf("PC_TO_TOP, ");
-				if (top->D1_TO_TOP)  printf("D1_TO_TOP, ");
-
-				if (top->MUL_TO_P)   printf("MUL_TO_P, ");
-				if (top->P_TO_PL)    printf("P_TO_PL, ");
-				if (top->X_TO_PL)    printf("X_TO_PL, ");
-				if (top->D1_TO_PL)   printf("D1_TO_PL, ");
-
-				if (top->LOAD_PL)    printf("LOAD_PL, ");
-
-				if (top->ALU_TO_A)   printf("ALU_TO_A, ");
-				if (top->Y_TO_ACL)   printf("Y_TO_ACL, ");
-
-				if (top->LOAD_ACH)   printf("LOAD_ACH, ");
-				if (top->LOAD_ACL)   printf("LOAD_ACL, ");
-
-				if (top->IMM_TO_D1)  printf("IMM_TO_D1, ");
-
-				if (top->IMM_TO_LOP) printf("IMM_TO_LOP, ");
-				if (top->D1_TO_LOP)  printf("D1_TO_LOP, ");
-
-				if (top->PC_TO_D0)   printf("PC_TO_D0, ");
-
-				if (top->RA_TO_RAMS) printf("RA_TO_RAMS, ");
-
-				if (top->SHIFT_L16_TO_D1) printf("SHFT_L16_TO_D1,");
-
-				if (top->CLR_A)      printf("CLR_A, ");
-
-				if (top->LOAD_CT0)   printf("LOAD_CT0,  ");
-				if (top->LOAD_CT1)   printf("LOAD_CT1,  ");
-				if (top->LOAD_CT2)   printf("LOAD_CT2,  ");
-				if (top->LOAD_CT3)   printf("LOAD_CT3,  ");
-				
-				if (top->LOAD_MD0)   printf("LOAD_MD0, ");
-				if (top->LOAD_MD1)   printf("LOAD_MD1, ");
-				if (top->LOAD_MD2)   printf("LOAD_MD2, ");
-				if (top->LOAD_MD3)   printf("LOAD_MD3, ");
-				
-				if (top->LOAD_RA)    printf("LOAD_RA,  ");
-
-				if (top->LOAD_RA0)   printf("LOAD_RA0, ");
-				if (top->LOAD_WA0)   printf("LOAD_WA0, ");
-
-				if (top->LOAD_LOP)   printf("LOAD_LOP, ");
-				if (top->LOAD_TOP)   printf("LOAD_TOP, ");
-
-				if (top->LOAD_PROG_RAM) printf("LOAD_PROG_RAM, ");
-
-				if (top->INC_CT0)    printf("INC_CT0,   ");
-				if (top->INC_CT1)    printf("INC_CT1,   ");
-				if (top->INC_CT2)    printf("INC_CT2,   ");
-				if (top->INC_CT3)    printf("INC_CT3,   ");
+				printf("D1_OP: %04x     ", d1bus_op);
 				
 				printf("\n");
 
@@ -274,7 +233,7 @@ int main(int argc, char **argv, char **env)
 				switch ( (d1bus_op&0x3000)>>12) {
 					case 0x0: printf("NOP           "); break;
 					case 0x1: {
-						printf("MOV #$%02x,", d1bus_op&0xFF);
+						printf("MOV #$%02x,", d1bus_op&0xFF);	// Grab the Immediate value from d1bus_op, bits 7:0.
 						switch ( (d1bus_op&0xF00)>>8 ) {
 							case 0x0: printf("MC0  "); break;
 							case 0x1: printf("MC1  "); break;
@@ -338,8 +297,9 @@ int main(int argc, char **argv, char **env)
 					default: break;
 				}
 
-			}	
-			
+			}// Operational Instruction printfs done.
+
+
 			// DMA Instruction...
 			if ( (top->FETCH&0xF0000000)>>28 == 0xC ) {
 				bool dma_format = (top->FETCH&0x00002000)>>13;
@@ -385,13 +345,100 @@ int main(int argc, char **argv, char **env)
 				printf("\n");
 			}
 			
+			// Control signals...
+			if (top->MD0_TO_X)   printf("MD0_TO_X,  ");
+			if (top->MD1_TO_X)   printf("MD1_TO_X,  ");
+			if (top->MD2_TO_X)   printf("MD2_TO_X,  ");
+			if (top->MD3_TO_X)   printf("MD3_TO_X,  ");
+
+			if (top->MD0_TO_Y)   printf("MD0_TO_Y,  ");
+			if (top->MD1_TO_Y)   printf("MD1_TO_Y,  ");
+			if (top->MD2_TO_Y)   printf("MD2_TO_Y,  ");
+			if (top->MD3_TO_Y)   printf("MD3_TO_Y,  ");
+
+			if (top->MD0_TO_D1)  printf("MD0_TO_D1, ");
+			if (top->MD1_TO_D1)  printf("MD1_TO_D1, ");
+			if (top->MD2_TO_D1)  printf("MD2_TO_D1, ");
+			if (top->MD3_TO_D1)  printf("MD3_TO_D1, ");
+
+			if (top->D1_TO_MD0)  printf("D1_TO_MD0, ");
+			if (top->D1_TO_MD1)  printf("D1_TO_MD1, ");
+			if (top->D1_TO_MD2)  printf("D1_TO_MD2, ");
+			if (top->D1_TO_MD3)  printf("D1_TO_MD3, ");
+
+			if (top->ACH_TO_D1)  printf("ACH_TO_D1, ");
+			if (top->ACL_TO_D1)  printf("ACL_TO_D1, ");
+
+			if (top->X_TO_RX)    printf("X_TO_RX, ");
+			if (top->D1_TO_RX)   printf("D1_TO_RX, ");
+
+			if (top->LOAD_RX)    printf("LOAD_RX, ");
+			if (top->LOAD_RY)    printf("LOAD_RY, ");
+
+			if (top->PC_TO_TOP)  printf("PC_TO_TOP, ");
+			if (top->D1_TO_TOP)  printf("D1_TO_TOP, ");
+
+			if (top->MUL_TO_P)   printf("MUL_TO_P, ");
+			if (top->P_TO_PL)    printf("P_TO_PL, ");
+			if (top->X_TO_PL)    printf("X_TO_PL, ");
+			if (top->D1_TO_PL)   printf("D1_TO_PL, ");
+
+			if (top->LOAD_PL)    printf("LOAD_PL, ");
+			if (top->LOAD_PH)    printf("LOAD_PH, ");
+
+			if (top->ALU_TO_A)   printf("ALU_TO_A, ");
+			if (top->Y_TO_ACL)   printf("Y_TO_ACL, ");
+
+			if (top->LOAD_ACH)   printf("LOAD_ACH, ");
+			if (top->LOAD_ACL)   printf("LOAD_ACL, ");
+
+			if (top->IMM_TO_D1)  printf("IMM_TO_D1, ");
+
+			if (top->IMM_TO_LOP) printf("IMM_TO_LOP, ");
+			if (top->D1_TO_LOP)  printf("D1_TO_LOP, ");
+
+			if (top->PC_TO_D0)   printf("PC_TO_D0, ");
+
+			if (top->RA_TO_RAMS) printf("RA_TO_RAMS, ");
+
+			if (top->SHIFT_L16_TO_D1) printf("SHFT_L16_TO_D1,");
+
+			if (top->CLR_A)      printf("CLR_A, ");
+
+			if (top->LOAD_CT0)   printf("LOAD_CT0,  ");
+			if (top->LOAD_CT1)   printf("LOAD_CT1,  ");
+			if (top->LOAD_CT2)   printf("LOAD_CT2,  ");
+			if (top->LOAD_CT3)   printf("LOAD_CT3,  ");
+			
+			if (top->LOAD_MD0)   printf("LOAD_MD0, ");
+			if (top->LOAD_MD1)   printf("LOAD_MD1, ");
+			if (top->LOAD_MD2)   printf("LOAD_MD2, ");
+			if (top->LOAD_MD3)   printf("LOAD_MD3, ");
+			
+			if (top->LOAD_RA)    printf("LOAD_RA,  ");
+
+			if (top->LOAD_RA0)   printf("LOAD_RA0, ");
+			if (top->LOAD_WA0)   printf("LOAD_WA0, ");
+
+			if (top->LOAD_LOP)   printf("LOAD_LOP, ");
+			if (top->LOAD_TOP)   printf("LOAD_TOP, ");
+
+			if (top->LOAD_PROG_RAM) printf("LOAD_PROG_RAM, ");
+
+			if (top->INC_CT0)    printf("INC_CT0,   ");
+			if (top->INC_CT1)    printf("INC_CT1,   ");
+			if (top->INC_CT2)    printf("INC_CT2,   ");
+			if (top->INC_CT3)    printf("INC_CT3,   ");
+			
 			printf("\n");
 
 			printf("D1BUS: %08x      ", top->D1_BUS);
 			printf("CT0: %02x  ", top->CT0);
 			printf("CT1: %02x  ", top->CT1);
 			printf("CT2: %02x  ", top->CT2);
-			printf("CT3: %02x  ", top->CT3);			
+			printf("CT3: %02x  ", top->CT3);
+			printf("RA0: %08x  ", top->RA0);
+			printf("WA0: %08x  ", top->WA0);
 						
 			printf("\n\n");
 		

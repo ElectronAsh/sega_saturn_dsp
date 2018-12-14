@@ -1,8 +1,13 @@
 module saturn_dsp (
 	input logic CLOCK,
 	
+	input logic RESET_N,
+	
 	input logic [31:0] D0_BUS_IN,
 	output logic [31:0] D0_BUS_OUT,
+	
+	input [7:0] D0_ADDR,
+	input D0_WRITE,
 	
 `ifdef VERILATOR
 	output logic [31:0] FETCH,
@@ -60,6 +65,7 @@ module saturn_dsp (
 	output logic D1_TO_PL,
 	
 	output logic LOAD_PL,
+	output logic LOAD_PH,
 	
 	output logic ALU_TO_A,
 	output logic Y_TO_ACL,
@@ -92,19 +98,21 @@ module saturn_dsp (
 	output logic [47:0] P_REG,
 	output logic [47:0] A_REG,
 	
+	output logic [31:0] D1_BUS,
+	
 	output logic [5:0] CT0,
 	output logic [5:0] CT1,
 	output logic [5:0] CT2,
 	output logic [5:0] CT3,
 	
-	output logic [31:0] D1_BUS,
+	output logic [31:0] RA0,
+	output logic [31:0] WA0,	
 `endif
 	
 	output logic [7:0] INST_ADDR,	
 	input logic [31:0] INST_IN
 	
 );
-
 
 logic MD0_TO_D0;
 logic MD1_TO_D0;
@@ -120,7 +128,7 @@ logic MD0_TO_D1;
 logic MD1_TO_D1;
 logic MD2_TO_D1;
 logic MD3_TO_D1;
-assign D1_BUS = (MD0_TO_D1) ? MD0_DOUT :
+assign D1_BUS = 	  (MD0_TO_D1) ? MD0_DOUT :
 					  (MD1_TO_D1) ? MD1_DOUT :
 					  (MD2_TO_D1) ? MD2_DOUT :
 					  (MD3_TO_D1) ? MD3_DOUT : 
@@ -165,10 +173,10 @@ logic [5:0] CT3;
 //
 logic [7:0] RA;
 
+`ifndef VERILATOR
 logic [31:0] RA0;
 logic [31:0] WA0;
-
-
+`endif
 
 
 logic [31:0] RX;		// Multiplier first input register.
@@ -194,7 +202,11 @@ logic [7:0] TOP;
 logic [31:0] FETCH;
 `endif
 
-always_ff @(posedge CLOCK) begin
+always_ff @(posedge CLOCK)
+if (!RESET_N) begin
+	INST_ADDR <= 0;
+end
+else begin
 	FETCH <= INST_IN;
 	INST_ADDR <= INST_ADDR + 1;
 	
@@ -212,6 +224,9 @@ always_ff @(posedge CLOCK) begin
 	if (INC_CT1) CT1 <= CT1 + 1'b1;
 	if (INC_CT2) CT2 <= CT2 + 1'b1;
 	if (INC_CT3) CT3 <= CT3 + 1'b1;
+	
+	if (LOAD_RA0) RA0 <= D1_BUS;
+	if (LOAD_WA0) WA0 <= D1_BUS;
 end
 
 
@@ -240,63 +255,68 @@ alu alu_inst (
 	.V_FLAG( V_FLAG )
 );
 
+// Allow external D0 Bus / Data RAM read access...
+assign D0_BUS_OUT = (D0_ADDR[7:6]==2'd0) ? MD0_DOUT :
+					(D0_ADDR[7:6]==2'd1) ? MD1_DOUT :
+					(D0_ADDR[7:6]==2'd2) ? MD2_DOUT :
+										   MD3_DOUT;
 
 
-logic [31:0] MD0_DI = (D1_TO_MD0) ? D1_BUS : D0_BUS_IN;
-logic [3:0] MD0_BE = 4'b1111;	// D0 access not added yet.
-logic MD0_WREN = LOAD_MD0;
+logic D0_MD0_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd0;
+logic [5:0] MD0_ADDR = (D0_MD0_WRITE) ? D0_ADDR[5:0] : CT0;
+logic [31:0] MD0_DI = (D0_MD0_WRITE) ? D0_BUS_IN : D1_BUS;
+logic MD0_WREN = LOAD_MD0 | D0_MD0_WRITE;
 logic [31:0] MD0_DOUT;
 data_ram	data_ram_md0 (
 	.clock ( CLOCK ),
 	
-	.address ( CT0 ),
+	.address ( MD0_ADDR ),
 	.data ( MD0_DI ),
-	.byteena ( MD0_BE ),
 	.wren ( MD0_WREN ),
 	
 	.q ( MD0_DOUT )
 );
 
-logic [31:0] MD1_DI = (D1_TO_MD1) ? D1_BUS : D0_BUS_IN;
-logic [3:0] MD1_BE = 4'b1111;	// D0 access not added yet.
-logic MD1_WREN = LOAD_MD1;
+logic D0_MD1_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd1;
+logic [5:0] MD1_ADDR = (D0_MD1_WRITE) ? D0_ADDR[5:0] : CT1;
+logic [31:0] MD1_DI = (D0_MD1_WRITE) ? D0_BUS_IN : D1_BUS;
+logic MD1_WREN = LOAD_MD1 | D0_MD1_WRITE;
 logic [31:0] MD1_DOUT;
 data_ram	data_ram_md1 (
 	.clock ( CLOCK ),
 	
-	.address ( CT1 ),
+	.address ( MD1_ADDR ),
 	.data ( MD1_DI ),
-	.byteena ( MD1_BE ),
 	.wren ( MD1_WREN ),
 	
 	.q ( MD1_DOUT )
 );
 
-logic [31:0] MD2_DI = (D1_TO_MD2) ? D1_BUS : D0_BUS_IN;
-logic [3:0] MD2_BE = 4'b1111;	// D0 access not added yet.
-logic MD2_WREN = LOAD_MD2;
+logic D0_MD2_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd2;
+logic [5:0] MD2_ADDR = (D0_MD2_WRITE) ? D0_ADDR[5:0] : CT2;
+logic [31:0] MD2_DI = (D0_MD2_WRITE) ? D0_BUS_IN : D1_BUS;
+logic MD2_WREN = LOAD_MD2 | D0_MD2_WRITE;
 logic [31:0] MD2_DOUT;
 data_ram	data_ram_md2 (
 	.clock ( CLOCK ),
 	
-	.address ( CT2 ),
+	.address ( MD2_ADDR ),
 	.data ( MD2_DI ),
-	.byteena ( MD2_BE ),
 	.wren ( MD2_WREN ),
 	
 	.q ( MD2_DOUT )
 );
 
-logic [31:0] MD3_DI = (D1_TO_MD3) ? D1_BUS : D0_BUS_IN;
-logic [3:0] MD3_BE = 4'b1111;	// D0 access not added yet.
-logic MD3_WREN = LOAD_MD3;
+logic D0_MD3_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd3;
+logic [5:0] MD3_ADDR = (D0_MD3_WRITE) ? D0_ADDR[5:0] : CT3;
+logic [31:0] MD3_DI = (D0_MD3_WRITE) ? D0_BUS_IN : D1_BUS;
+logic MD3_WREN = LOAD_MD3 | D0_MD3_WRITE;
 logic [31:0] MD3_DOUT;
 data_ram	data_ram_md3 (
 	.clock ( CLOCK ),
 	
-	.address ( CT3 ),
+	.address ( MD3_ADDR ),
 	.data ( MD3_DI ),
-	.byteena ( MD3_BE ),
 	.wren ( MD3_WREN ),
 	
 	.q ( MD3_DOUT )
@@ -347,6 +367,7 @@ instruction_decoder instruction_decoder_inst
 	.X_TO_PL(X_TO_PL) ,		// output  X_TO_PL
 	.D1_TO_PL(D1_TO_PL) ,	// output  D1_TO_PL
 	.LOAD_PL(LOAD_PL) ,		// output  LOAD_PL
+	.LOAD_PH(LOAD_PH) ,		// output  LOAD_PH
 	.ALU_TO_A(ALU_TO_A) ,	// output  ALU_TO_A
 	.Y_TO_ACL(Y_TO_ACL) ,	// output  Y_TO_ACL
 	.LOAD_ACH(LOAD_ACH) ,	// output  LOAD_ACH
@@ -531,6 +552,7 @@ module instruction_decoder (
 	output logic D1_TO_PL,
 	
 	output logic LOAD_PL,
+	output logic LOAD_PH,
 	
 	output logic ALU_TO_A,
 	output logic Y_TO_ACL,
@@ -620,6 +642,7 @@ always_comb begin
 	X_TO_PL <= 1'b0;
 	D1_TO_PL <= 1'b0;
 	LOAD_PL <= 1'b0;
+	LOAD_PH <= 1'b0;
 	
 	ALU_TO_A <= 1'b0;
 	Y_TO_ACL <= 1'b0;
@@ -691,6 +714,8 @@ always_comb begin
 		// Handle MOV MUL,P
 		3'b010: begin
 			MUL_TO_P <= 1'b1;
+			LOAD_PH <= 1'b1;
+			LOAD_PL <= 1'b1;
 		end
 		
 		// Handle MOV [s],P
@@ -757,7 +782,7 @@ always_comb begin
 			
 		// Handle CLR A.
 		3'b001: begin
-			MUL_TO_P <= 1'b1;
+			CLR_A <= 1'b1;
 		end
 		
 		// Handle MOV ALU,A
@@ -990,7 +1015,6 @@ module data_ram(
 	input logic [5:0] address,
 
 	input logic [31:0] data,
-	input logic [3:0] byteena,
 	input logic wren,
 
 	output logic [31:0] q
@@ -998,16 +1022,10 @@ module data_ram(
 
 logic [31:0] RAM [0:63];
 
-always_ff @(posedge clock) begin
-	if (wren) begin
-		if (byteena[3]) RAM[address][31:24] <= data;
-		if (byteena[2]) RAM[address][23:16] <= data;
-		if (byteena[1]) RAM[address][15:8] <= data;
-		if (byteena[0]) RAM[address][7:0] <= data;	
-	end
-end
+always_ff @(posedge clock) if (wren) RAM[address] <= data;
 
 assign q = RAM[address];
+
 
 endmodule
 `endif

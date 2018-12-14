@@ -22,6 +22,9 @@ VL_MODULE(Vsaturn_dsp) {
     // propagate new values into/out from the Verilated model.
     // Begin mtask footprint  all: 
     VL_IN8(CLOCK,0,0);
+    VL_IN8(RESET_N,0,0);
+    VL_IN8(D0_ADDR,7,0);
+    VL_IN8(D0_WRITE,0,0);
     VL_OUT8(LOAD_CT0,0,0);
     VL_OUT8(LOAD_CT1,0,0);
     VL_OUT8(LOAD_CT2,0,0);
@@ -63,6 +66,7 @@ VL_MODULE(Vsaturn_dsp) {
     VL_OUT8(X_TO_PL,0,0);
     VL_OUT8(D1_TO_PL,0,0);
     VL_OUT8(LOAD_PL,0,0);
+    VL_OUT8(LOAD_PH,0,0);
     VL_OUT8(ALU_TO_A,0,0);
     VL_OUT8(Y_TO_ACL,0,0);
     VL_OUT8(LOAD_ACH,0,0);
@@ -89,6 +93,8 @@ VL_MODULE(Vsaturn_dsp) {
     VL_OUT(D0_BUS_OUT,31,0);
     VL_OUT(FETCH,31,0);
     VL_OUT(D1_BUS,31,0);
+    VL_OUT(RA0,31,0);
+    VL_OUT(WA0,31,0);
     VL_IN(INST_IN,31,0);
     VL_OUT64(P_REG,47,0);
     VL_OUT64(A_REG,47,0);
@@ -96,12 +102,20 @@ VL_MODULE(Vsaturn_dsp) {
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
     // Begin mtask footprint  all: 
+    VL_SIG8(saturn_dsp__DOT__D0_MD0_WRITE,0,0);
+    VL_SIG8(saturn_dsp__DOT__MD0_ADDR,5,0);
+    VL_SIG8(saturn_dsp__DOT__D0_MD1_WRITE,0,0);
+    VL_SIG8(saturn_dsp__DOT__MD1_ADDR,5,0);
+    VL_SIG8(saturn_dsp__DOT__D0_MD2_WRITE,0,0);
+    VL_SIG8(saturn_dsp__DOT__MD2_ADDR,5,0);
+    VL_SIG8(saturn_dsp__DOT__D0_MD3_WRITE,0,0);
+    VL_SIG8(saturn_dsp__DOT__MD3_ADDR,5,0);
     VL_SIG(saturn_dsp__DOT__RX,31,0);
     VL_SIG(saturn_dsp__DOT__RY,31,0);
-    VL_SIG(saturn_dsp__DOT__MD0_DI,31,0);
-    VL_SIG(saturn_dsp__DOT__MD1_DI,31,0);
-    VL_SIG(saturn_dsp__DOT__MD2_DI,31,0);
-    VL_SIG(saturn_dsp__DOT__MD3_DI,31,0);
+    VL_SIG(saturn_dsp__DOT__MD0_DOUT,31,0);
+    VL_SIG(saturn_dsp__DOT__MD1_DOUT,31,0);
+    VL_SIG(saturn_dsp__DOT__MD2_DOUT,31,0);
+    VL_SIG(saturn_dsp__DOT__MD3_DOUT,31,0);
     VL_SIG64(saturn_dsp__DOT__alu_inst__DOT__INT_RES,49,0);
     VL_SIG(saturn_dsp__DOT__data_ram_md0__DOT__RAM[64],31,0);
     VL_SIG(saturn_dsp__DOT__data_ram_md1__DOT__RAM[64],31,0);
@@ -144,6 +158,9 @@ VL_MODULE(Vsaturn_dsp) {
     void __Vconfigure(Vsaturn_dsp__Syms* symsp, bool first);
   private:
     static QData _change_request(Vsaturn_dsp__Syms* __restrict vlSymsp);
+  public:
+    static void _combo__TOP__4(Vsaturn_dsp__Syms* __restrict vlSymsp);
+  private:
     void _ctor_var_reset();
   public:
     static void _eval(Vsaturn_dsp__Syms* __restrict vlSymsp);
@@ -157,6 +174,7 @@ VL_MODULE(Vsaturn_dsp) {
     static void _initial__TOP__3(Vsaturn_dsp__Syms* __restrict vlSymsp);
     static void _sequent__TOP__2(Vsaturn_dsp__Syms* __restrict vlSymsp);
     static void _settle__TOP__1(Vsaturn_dsp__Syms* __restrict vlSymsp);
+    static void _settle__TOP__5(Vsaturn_dsp__Syms* __restrict vlSymsp);
 } VL_ATTR_ALIGNED(128);
 
 #endif // guard
