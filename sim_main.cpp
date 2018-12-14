@@ -82,30 +82,29 @@ int main(int argc, char **argv, char **env)
 	while ( main_time < 1024 ) {	// Only run for a short time.
 		if (main_time < 8) {
 			top->RESET_N = 0;		// Assert reset
+			top->EXEC = 0;			// Halt the DSP, until we've loaded the data into the Data RAMs...
 		}
-		if (main_time == 512) {
+		if (main_time == 20) {
 			top->RESET_N = 1;   	// Deassert reset
 		}
 		
 		if (ram_addr<256) {
-			
-			if ((main_time & 1) == 1) {
+			if ((main_time & 1) == 0) {
 				byte_swap = (ram_ptr[ram_addr]&0xFF000000)>>24 |
 							(ram_ptr[ram_addr]&0x00FF0000)>>8 |
 							(ram_ptr[ram_addr]&0x0000FF00)<<8 |
 							(ram_ptr[ram_addr]&0x000000FF)<<24;
 							
-				printf("ram_addr: %02x  ram_data: %08x\n", ram_addr, byte_swap);
-
 				top->D0_ADDR = ram_addr;				
 				top->D0_BUS_IN = byte_swap;
 				top->D0_WRITE = 1;
-			}
-			
-			if ((main_time & 1) == 0) {
-				top->D0_WRITE = 0;
+				printf("D0_ADDR: 0x%02x  D0_BUS_IN: 0x%08x\n", top->D0_ADDR, top->D0_BUS_IN);
 				ram_addr++;
 			}
+		}
+		else {
+			top->D0_WRITE = 0;	// Stop the writes.
+			top->EXEC = 1;		// Start the DSP instruction decoding!
 		}
 		
 		
@@ -440,7 +439,12 @@ int main(int argc, char **argv, char **env)
 			printf("RA0: %08x  ", top->RA0);
 			printf("WA0: %08x  ", top->WA0);
 						
-			printf("\n\n");
+			printf("\n");
+			
+			printf("MD0_DOUT: %08x  MD1_DOUT: %08x  MD2_DOUT: %08x  MD3_DOUT: %08x\n", top->MD0_DOUT, top->MD1_DOUT, top->MD2_DOUT, top->MD3_DOUT);
+			printf("MD0_WREN: %d         MD1_WREN: %d         MD2_WREN: %d         MD3_WREN: %d\n", top->MD0_WREN, top->MD1_WREN, top->MD2_WREN, top->MD3_WREN);
+			
+			printf("\n");
 		
 					
 			if (vga_clk==1) {

@@ -9,8 +9,20 @@ module saturn_dsp (
 	input [7:0] D0_ADDR,
 	input D0_WRITE,
 	
+	input EXEC,
+	
+	output logic MD0_WREN,
+	output logic MD1_WREN,
+	output logic MD2_WREN,
+	output logic MD3_WREN,
+	
 `ifdef VERILATOR
 	output logic [31:0] FETCH,
+	
+	output logic [31:0] MD0_DOUT,
+	output logic [31:0] MD1_DOUT,
+	output logic [31:0] MD2_DOUT,
+	output logic [31:0] MD3_DOUT,
 
 	output logic LOAD_CT0,
 	output logic LOAD_CT1,
@@ -204,11 +216,14 @@ logic [31:0] FETCH;
 
 always_ff @(posedge CLOCK)
 if (!RESET_N) begin
+	FETCH <= 32'h00000000;
 	INST_ADDR <= 0;
 end
 else begin
-	FETCH <= INST_IN;
-	INST_ADDR <= INST_ADDR + 1;
+	if (EXEC) begin
+		FETCH <= INST_IN;
+		INST_ADDR <= INST_ADDR + 1;
+	end
 	
 	if (MUL_TO_P) P_REG <= MUL_RESULT;
 	
@@ -262,11 +277,13 @@ assign D0_BUS_OUT = (D0_ADDR[7:6]==2'd0) ? MD0_DOUT :
 										   MD3_DOUT;
 
 
-logic D0_MD0_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd0;
+logic D0_MD0_WRITE = D0_WRITE && D0_ADDR[7:6]==2'b00;
 logic [5:0] MD0_ADDR = (D0_MD0_WRITE) ? D0_ADDR[5:0] : CT0;
 logic [31:0] MD0_DI = (D0_MD0_WRITE) ? D0_BUS_IN : D1_BUS;
-logic MD0_WREN = LOAD_MD0 | D0_MD0_WRITE;
+assign MD0_WREN = LOAD_MD0 | D0_MD0_WRITE;
+`ifndef VERILATOR
 logic [31:0] MD0_DOUT;
+`endif
 data_ram	data_ram_md0 (
 	.clock ( CLOCK ),
 	
@@ -277,11 +294,13 @@ data_ram	data_ram_md0 (
 	.q ( MD0_DOUT )
 );
 
-logic D0_MD1_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd1;
+logic D0_MD1_WRITE = D0_WRITE && D0_ADDR[7:6]==2'b01;
 logic [5:0] MD1_ADDR = (D0_MD1_WRITE) ? D0_ADDR[5:0] : CT1;
 logic [31:0] MD1_DI = (D0_MD1_WRITE) ? D0_BUS_IN : D1_BUS;
-logic MD1_WREN = LOAD_MD1 | D0_MD1_WRITE;
+assign MD1_WREN = LOAD_MD1 | D0_MD1_WRITE;
+`ifndef VERILATOR
 logic [31:0] MD1_DOUT;
+`endif
 data_ram	data_ram_md1 (
 	.clock ( CLOCK ),
 	
@@ -292,11 +311,13 @@ data_ram	data_ram_md1 (
 	.q ( MD1_DOUT )
 );
 
-logic D0_MD2_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd2;
+logic D0_MD2_WRITE = D0_WRITE && D0_ADDR[7:6]==2'b10;
 logic [5:0] MD2_ADDR = (D0_MD2_WRITE) ? D0_ADDR[5:0] : CT2;
 logic [31:0] MD2_DI = (D0_MD2_WRITE) ? D0_BUS_IN : D1_BUS;
-logic MD2_WREN = LOAD_MD2 | D0_MD2_WRITE;
+assign MD2_WREN = LOAD_MD2 | D0_MD2_WRITE;
+`ifndef VERILATOR
 logic [31:0] MD2_DOUT;
+`endif
 data_ram	data_ram_md2 (
 	.clock ( CLOCK ),
 	
@@ -307,11 +328,13 @@ data_ram	data_ram_md2 (
 	.q ( MD2_DOUT )
 );
 
-logic D0_MD3_WRITE = D0_WRITE && D0_ADDR[7:6]==2'd3;
+logic D0_MD3_WRITE = D0_WRITE && D0_ADDR[7:6]==2'b11;
 logic [5:0] MD3_ADDR = (D0_MD3_WRITE) ? D0_ADDR[5:0] : CT3;
 logic [31:0] MD3_DI = (D0_MD3_WRITE) ? D0_BUS_IN : D1_BUS;
-logic MD3_WREN = LOAD_MD3 | D0_MD3_WRITE;
+assign MD3_WREN = LOAD_MD3 | D0_MD3_WRITE;
+`ifndef VERILATOR
 logic [31:0] MD3_DOUT;
+`endif
 data_ram	data_ram_md3 (
 	.clock ( CLOCK ),
 	
@@ -1013,19 +1036,14 @@ endmodule
 module data_ram(
 	input logic clock,
 	input logic [5:0] address,
-
 	input logic [31:0] data,
 	input logic wren,
-
 	output logic [31:0] q
 );
 
 logic [31:0] RAM [0:63];
-
 always_ff @(posedge clock) if (wren) RAM[address] <= data;
-
 assign q = RAM[address];
-
 
 endmodule
 `endif

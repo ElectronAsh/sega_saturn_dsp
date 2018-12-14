@@ -25,6 +25,11 @@ VL_MODULE(Vsaturn_dsp) {
     VL_IN8(RESET_N,0,0);
     VL_IN8(D0_ADDR,7,0);
     VL_IN8(D0_WRITE,0,0);
+    VL_IN8(EXEC,0,0);
+    VL_OUT8(MD0_WREN,0,0);
+    VL_OUT8(MD1_WREN,0,0);
+    VL_OUT8(MD2_WREN,0,0);
+    VL_OUT8(MD3_WREN,0,0);
     VL_OUT8(LOAD_CT0,0,0);
     VL_OUT8(LOAD_CT1,0,0);
     VL_OUT8(LOAD_CT2,0,0);
@@ -92,6 +97,10 @@ VL_MODULE(Vsaturn_dsp) {
     VL_IN(D0_BUS_IN,31,0);
     VL_OUT(D0_BUS_OUT,31,0);
     VL_OUT(FETCH,31,0);
+    VL_OUT(MD0_DOUT,31,0);
+    VL_OUT(MD1_DOUT,31,0);
+    VL_OUT(MD2_DOUT,31,0);
+    VL_OUT(MD3_DOUT,31,0);
     VL_OUT(D1_BUS,31,0);
     VL_OUT(RA0,31,0);
     VL_OUT(WA0,31,0);
@@ -102,20 +111,12 @@ VL_MODULE(Vsaturn_dsp) {
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
     // Begin mtask footprint  all: 
-    VL_SIG8(saturn_dsp__DOT__D0_MD0_WRITE,0,0);
     VL_SIG8(saturn_dsp__DOT__MD0_ADDR,5,0);
-    VL_SIG8(saturn_dsp__DOT__D0_MD1_WRITE,0,0);
     VL_SIG8(saturn_dsp__DOT__MD1_ADDR,5,0);
-    VL_SIG8(saturn_dsp__DOT__D0_MD2_WRITE,0,0);
     VL_SIG8(saturn_dsp__DOT__MD2_ADDR,5,0);
-    VL_SIG8(saturn_dsp__DOT__D0_MD3_WRITE,0,0);
     VL_SIG8(saturn_dsp__DOT__MD3_ADDR,5,0);
     VL_SIG(saturn_dsp__DOT__RX,31,0);
     VL_SIG(saturn_dsp__DOT__RY,31,0);
-    VL_SIG(saturn_dsp__DOT__MD0_DOUT,31,0);
-    VL_SIG(saturn_dsp__DOT__MD1_DOUT,31,0);
-    VL_SIG(saturn_dsp__DOT__MD2_DOUT,31,0);
-    VL_SIG(saturn_dsp__DOT__MD3_DOUT,31,0);
     VL_SIG64(saturn_dsp__DOT__alu_inst__DOT__INT_RES,49,0);
     VL_SIG(saturn_dsp__DOT__data_ram_md0__DOT__RAM[64],31,0);
     VL_SIG(saturn_dsp__DOT__data_ram_md1__DOT__RAM[64],31,0);
