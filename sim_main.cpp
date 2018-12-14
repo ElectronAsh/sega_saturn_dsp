@@ -166,8 +166,8 @@ int main(int argc, char **argv, char **env)
 					case 0xF: printf("RL8           "); break;
 				}
 				
-
-				if ( ((top->FETCH&0x2000000)>>25)==1 ) {	// If bit 25 of FETCH is set.
+				// Handle X-Bus instructions...
+				if ( ((top->FETCH&0x2000000)>>25)==1 ) {// If bit 25 of FETCH is set.
 					switch (xbus_op&0x7) {
 						case 0x0: printf("MOV M0,X      "); break;
 						case 0x1: printf("MOV M1,X      "); break;
@@ -179,29 +179,30 @@ int main(int argc, char **argv, char **env)
 						case 0x7: printf("MOV MC3,X     "); break;
 					}
 				}
-		
-				if ( ((top->FETCH&0x1800000)>>23)==2 ) {	// If bits 24:23 of FETCH are set to 0b10.
-					printf("MOV MUL,P     ");
-				}
-				else if ( ((top->FETCH&0x1800000)>>23)==3 ) {	// If bits 24:23 are set to 0b11.
-					switch (xbus_op&0x7) {
-						case 0x0: printf("MOV M0,P      "); break;
-						case 0x1: printf("MOV M1,P      "); break;
-						case 0x2: printf("MOV M2,P      "); break;
-						case 0x3: printf("MOV M3,P      "); break;
-						case 0x4: printf("MOV MC0,P     "); break;
-						case 0x5: printf("MOV MC1,P     "); break;
-						case 0x6: printf("MOV MC2,P     "); break;
-						case 0x7: printf("MOV MC3,P     "); break;
+				switch ( (top->FETCH&0x1800000)>>23 ) {	// Bits 24:23 of FETCH.
+					case 0: break;
+					case 1: break;
+					case 2: printf("MOV MUL,P     "); break;
+					case 3: {
+						switch (xbus_op&0x7) {
+							case 0x0: printf("MOV M0,P      "); break;
+							case 0x1: printf("MOV M1,P      "); break;
+							case 0x2: printf("MOV M2,P      "); break;
+							case 0x3: printf("MOV M3,P      "); break;
+							case 0x4: printf("MOV MC0,P     "); break;
+							case 0x5: printf("MOV MC1,P     "); break;
+							case 0x6: printf("MOV MC2,P     "); break;
+							case 0x7: printf("MOV MC3,P     "); break;
+						}
 					}
 				}
-				
-				if ( ((top->FETCH&0x3800000)>>23)==0 ) {
+				if ( ((top->FETCH&0x3800000)>>23)==0 ) {// If bits 25:23 of FETCH are low.
 					printf("NOP           ");
 				}
 				
 				
-				if ( ((top->FETCH&0x80000)>>19)==1 ) {
+				// Handle Y-Bus instructions...				
+				if ( ((top->FETCH&0x80000)>>19)==1 ) {	// If bit 19 of FETCH is set.
 					switch (ybus_op&0x7) {
 						case 0x0: printf("MOV M0,Y      "); break;
 						case 0x1: printf("MOV M1,Y      "); break;
@@ -213,9 +214,8 @@ int main(int argc, char **argv, char **env)
 						case 0x7: printf("MOV MC3,Y     "); break;
 					}
 				}
-				
-				switch ( (top->FETCH&0x60000)>>17 ) {
-					case 0: printf("NOP           "); break;
+				switch ((top->FETCH&0x60000)>>17) {	// Bits 18:17 of FETCH.
+					case 0: break;
 					case 1: printf("CLR A         "); break;
 					case 2: printf("MOV ALU,A     "); break;
 					case 3: {
@@ -230,6 +230,9 @@ int main(int argc, char **argv, char **env)
 							case 0x7: printf("MOV MC3,A     "); break;
 						}
 					}
+				}
+				if ( ((top->FETCH&0xE0000)>>17)==0 ) {	// If bits 19:17 of FETCH are low.
+					printf("NOP           ");
 				}
 			
 				
