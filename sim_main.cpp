@@ -147,7 +147,7 @@ int main(int argc, char **argv, char **env)
 				printf("P_REG: %012x  ", top->P_REG);
 				printf("A_REG: %012x  ", top->A_REG);
 				
-				switch (alu_op) {
+				switch ( (top->FETCH&0x3C000000)>>26 ) {
 					case 0x0: printf("NOP           "); break;
 					case 0x1: printf("AND           "); break;
 					case 0x2: printf("OR            "); break;
@@ -166,68 +166,72 @@ int main(int argc, char **argv, char **env)
 					case 0xF: printf("RL8           "); break;
 				}
 				
-				switch ( (xbus_op&0x38)>>3 ) {
-					case 0x0: printf("NOP           "); break;
-					case 0x1: break;
-					case 0x2: printf("MOV MUL,P     "); break;
-					case 0x3: {
-						switch (xbus_op&0x7) {
-							case 0x0: printf("MOV M0,PL     "); break;
-							case 0x1: printf("MOV M1,PL     "); break;
-							case 0x2: printf("MOV M2,PL     "); break;
-							case 0x3: printf("MOV M3,PL     "); break;
-							case 0x4: printf("MOV MC0,PL    "); break;
-							case 0x5: printf("MOV MC1,PL    "); break;
-							case 0x6: printf("MOV MC2,PL    "); break;
-							case 0x7: printf("MOV MC3,PL    "); break;
-						}
+
+				if ( ((top->FETCH&0x2000000)>>25)==1 ) {	// If bit 25 of FETCH is set.
+					switch (xbus_op&0x7) {
+						case 0x0: printf("MOV M0,X      "); break;
+						case 0x1: printf("MOV M1,X      "); break;
+						case 0x2: printf("MOV M2,X      "); break;
+						case 0x3: printf("MOV M3,X      "); break;
+						case 0x4: printf("MOV MC0,X     "); break;
+						case 0x5: printf("MOV MC1,X     "); break;
+						case 0x6: printf("MOV MC2,X     "); break;
+						case 0x7: printf("MOV MC3,X     "); break;
 					}
-					case 0x4: {
-						switch (xbus_op&0x7) {
-							case 0x0: printf("MOV M0,X      "); break;
-							case 0x1: printf("MOV M1,X      "); break;
-							case 0x2: printf("MOV M2,X      "); break;
-							case 0x3: printf("MOV M3,X      "); break;
-							case 0x4: printf("MOV MC0,X     "); break;
-							case 0x5: printf("MOV MC1,X     "); break;
-							case 0x6: printf("MOV MC2,X     "); break;
-							case 0x7: printf("MOV MC3,X     "); break;
-						}
+				}
+		
+				if ( ((top->FETCH&0x1800000)>>23)==2 ) {	// If bits 24:23 of FETCH are set to 0b10.
+					printf("MOV MUL,P     ");
+				}
+				else if ( ((top->FETCH&0x1800000)>>23)==3 ) {	// If bits 24:23 are set to 0b11.
+					switch (xbus_op&0x7) {
+						case 0x0: printf("MOV M0,P      "); break;
+						case 0x1: printf("MOV M1,P      "); break;
+						case 0x2: printf("MOV M2,P      "); break;
+						case 0x3: printf("MOV M3,P      "); break;
+						case 0x4: printf("MOV MC0,P     "); break;
+						case 0x5: printf("MOV MC1,P     "); break;
+						case 0x6: printf("MOV MC2,P     "); break;
+						case 0x7: printf("MOV MC3,P     "); break;
 					}
-					default: break;
 				}
 				
-				switch ( (ybus_op&0x38)>>3 ) {
-					case 0x0: printf("NOP           "); break;
-					case 0x1: printf("CLR A         "); break;
-					case 0x2: printf("MOV ALU,A     "); break;
-					case 0x3: {
-						switch (xbus_op&0x7) {
-							case 0x0: printf("MOV M0,ACL    "); break;
-							case 0x1: printf("MOV M1,ACL    "); break;
-							case 0x2: printf("MOV M2,ACL    "); break;
-							case 0x3: printf("MOV M3,ACL    "); break;
-							case 0x4: printf("MOV MC0,ACL   "); break;
-							case 0x5: printf("MOV MC1,ACL   "); break;
-							case 0x6: printf("MOV MC2,ACL   "); break;
-							case 0x7: printf("MOV MC3,ACL   "); break;
-						}
-					}
-					case 0x4: {
-						switch (xbus_op&0x7) {
-							case 0x0: printf("MOV M0,Y      "); break;
-							case 0x1: printf("MOV M1,Y      "); break;
-							case 0x2: printf("MOV M2,Y      "); break;
-							case 0x3: printf("MOV M3,Y      "); break;
-							case 0x4: printf("MOV MC0,Y     "); break;
-							case 0x5: printf("MOV MC1,Y     "); break;
-							case 0x6: printf("MOV MC2,Y     "); break;
-							case 0x7: printf("MOV MC3,Y     "); break;
-						}
-					}
-					default: break;
+				if ( ((top->FETCH&0x3800000)>>23)==0 ) {
+					printf("NOP           ");
 				}
 				
+				
+				if ( ((top->FETCH&0x80000)>>19)==1 ) {
+					switch (ybus_op&0x7) {
+						case 0x0: printf("MOV M0,Y      "); break;
+						case 0x1: printf("MOV M1,Y      "); break;
+						case 0x2: printf("MOV M2,Y      "); break;
+						case 0x3: printf("MOV M3,Y      "); break;
+						case 0x4: printf("MOV MC0,Y     "); break;
+						case 0x5: printf("MOV MC1,Y     "); break;
+						case 0x6: printf("MOV MC2,Y     "); break;
+						case 0x7: printf("MOV MC3,Y     "); break;
+					}
+				}
+				
+				switch ( (top->FETCH&0x60000)>>17 ) {
+					case 0: printf("NOP           "); break;
+					case 1: printf("CLR A         "); break;
+					case 2: printf("MOV ALU,A     "); break;
+					case 3: {
+						switch (ybus_op&0x7) {
+							case 0x0: printf("MOV M0,A      "); break;
+							case 0x1: printf("MOV M1,A      "); break;
+							case 0x2: printf("MOV M2,A      "); break;
+							case 0x3: printf("MOV M3,A      "); break;
+							case 0x4: printf("MOV MC0,A     "); break;
+							case 0x5: printf("MOV MC1,A     "); break;
+							case 0x6: printf("MOV MC2,A     "); break;
+							case 0x7: printf("MOV MC3,A     "); break;
+						}
+					}
+				}
+			
 				
 				switch ( (d1bus_op&0x3000)>>12) {
 					case 0x0: printf("NOP           "); break;
@@ -344,6 +348,8 @@ int main(int argc, char **argv, char **env)
 				printf("\n");
 			}
 			
+			printf("\n");
+			
 			// Control signals...
 			if (top->MD0_TO_X)   printf("MD0_TO_X,  ");
 			if (top->MD1_TO_X)   printf("MD1_TO_X,  ");
@@ -368,11 +374,11 @@ int main(int argc, char **argv, char **env)
 			if (top->ACH_TO_D1)  printf("ACH_TO_D1, ");
 			if (top->ACL_TO_D1)  printf("ACL_TO_D1, ");
 
-			if (top->X_TO_RX)    printf("X_TO_RX, ");
+			if (top->X_TO_RX)    printf("X_TO_RX,  ");
 			if (top->D1_TO_RX)   printf("D1_TO_RX, ");
 
-			if (top->LOAD_RX)    printf("LOAD_RX, ");
-			if (top->LOAD_RY)    printf("LOAD_RY, ");
+			if (top->LOAD_RX)    printf("LOAD_RX,  ");
+			if (top->LOAD_RY)    printf("LOAD_RY,  ");
 
 			if (top->PC_TO_TOP)  printf("PC_TO_TOP, ");
 			if (top->D1_TO_TOP)  printf("D1_TO_TOP, ");

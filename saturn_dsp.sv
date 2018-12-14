@@ -661,6 +661,7 @@ always_comb begin
 	PC_TO_TOP <= 1'b0;
 	D1_TO_TOP <= 1'b0;
 	
+	MUL_TO_P <= 1'b0;
 	P_TO_PL <= 1'b0;
 	X_TO_PL <= 1'b0;
 	D1_TO_PL <= 1'b0;
