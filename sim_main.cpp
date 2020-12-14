@@ -15,7 +15,7 @@ uint32_t *ram_ptr = (uint32_t *) malloc(ram_size);
 
 unsigned int file_size;
 
-int main_time;
+int main_time = 0;
 
 int hcount = 0;
 int vcount = 0;
@@ -167,7 +167,7 @@ int main(int argc, char **argv, char **env)
 				}
 				
 				// Handle X-Bus instructions...
-				if ( ((top->FETCH&0x2000000)>>25)==1 ) {// If bit 25 of FETCH is set.
+				if ( ((top->FETCH&0x2000000)>>25)==1 ) {// If bit 25 of FETCH is set. (can be combined with an instruction below.)
 					switch (xbus_op&0x7) {
 						case 0x0: printf("MOV M0,X      "); break;
 						case 0x1: printf("MOV M1,X      "); break;
@@ -202,7 +202,7 @@ int main(int argc, char **argv, char **env)
 				
 				
 				// Handle Y-Bus instructions...				
-				if ( ((top->FETCH&0x80000)>>19)==1 ) {	// If bit 19 of FETCH is set.
+				if ( ((top->FETCH&0x80000)>>19)==1 ) {	// If bit 19 of FETCH is set. (can be combined with an instruction below.)
 					switch (ybus_op&0x7) {
 						case 0x0: printf("MOV M0,Y      "); break;
 						case 0x1: printf("MOV M1,Y      "); break;
