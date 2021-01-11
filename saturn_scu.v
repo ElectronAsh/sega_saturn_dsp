@@ -75,11 +75,11 @@ module saturn_scu (
 	
 								// NOTE: SH-2 CS0 (0x00000000-0x01FFFFFF) goes to the DDC, for accessing the BIOS ROM, SMPC, BRAM, Lower Work DRAM.
 	
-	inout			CCS1_N,		// C-Bus Chip Select 1 (SH-2 0x02000000-0x03FFFFFF). (A-bus CS0 Cart slot). Service Manual says this is an Input? 
+	input			CCS1_N,		// C-Bus Chip Select 1 (SH-2 0x02000000-0x03FFFFFF). (A-bus CS0 Cart slot). Service Manual says this is an Input? 
 	
-	inout			CCS2_N,		// C-Bus Chip Select 2 (SH-2 0x04000000-0x05FFFFFF). (A-bus CS1 Cart slot,Dummy,CS2 CD-ROM. B-bus SCSP,VDP1,VDP2,SCU). Service Man says this is an Input?
+	input			CCS2_N,		// C-Bus Chip Select 2 (SH-2 0x04000000-0x05FFFFFF). (A-bus CS1 Cart slot,Dummy,CS2 CD-ROM. B-bus SCSP,VDP1,VDP2,SCU). Service Man says this is an Input?
 
-	inout			CCS3_N,		// C-Bus Chip Select 3 (SH-2 0x06000000-0x07FFFFFF). (Upper Work RAM. 1MB. SDRAM CS_N). Service Manual says this is an Output?
+	inout			CCS3_N,		// C-Bus Chip Select 3 (SH-2 0x06000000-0x07FFFFFF). (Upper Work RAM. 1MB. SDRAM CS_N). Service Manual says this is an Output? (driven during SDRAM DMA?)
 
 	inout			CRDWR,		// C-Bus Read/Write. (Upper Work RAM SDRAM WE_N).
 
@@ -115,113 +115,120 @@ module saturn_scu (
 // 00100000-0017FFFF : SMPC registers (128 bytes, mirrored every 128 bytes)
 // 00180000-001FFFFF : Backup RAM (64K, mirrored every 64K) [1]
 // 
-// logic bios_cs  = (addr_internal>=25'h00000000 && addr_internal<=25'h000FFFFF);
-// logic smpc_cs  = (addr_internal>=25'h00100000 && addr_internal<=25'h0010007F);
-// logic bram_cs  = (addr_internal>=25'h00100080 && addr_internal<=25'h0018FFFF);
-// logic wraml_cs = (addr_internal>=25'h00200000 && addr_internal<=25'h002FFFFF);
-// logic minit_cs = (addr_internal>=25'h01000000 && addr_internal<=25'h01000003);
-// logic sinit_cs = (addr_internal>=25'h01800000 && addr_internal<=25'h01800003);
+// logic bios_cs  = (addr_int>=25'h00000000 && addr_int<=25'h000FFFFF);
+// logic smpc_cs  = (addr_int>=25'h00100000 && addr_int<=25'h0010007F);
+// logic bram_cs  = (addr_int>=25'h00100080 && addr_int<=25'h0018FFFF);
+// logic wraml_cs = (addr_int>=25'h00200000 && addr_int<=25'h002FFFFF);
+// logic minit_cs = (addr_int>=25'h01000000 && addr_int<=25'h01000003);
+// logic sinit_cs = (addr_int>=25'h01800000 && addr_int<=25'h01800003);
 
 
-// "addr_internal" may have to change internally during DMA. ElectronAsh.
-logic [24:0] addr_internal = CA;
+// Internal address will have to change during DMA. ElectronAsh.
+logic [24:0] addr_int = CA;
 
 // NOTE: SH-2 CS0 (0x00000000-0x01FFFFFF) goes to the DDC, for accessing the BIOS ROM, SMPC, BRAM, Lower Work DRAM.
 // SH-2 CS0 is not connected to the SCU, only CS1, CS2, CS3.
 
 // SH-2 CS1 (0x02000000-0x03FFFFFF). A-bus CS0.
 /*
-logic abus_cs0		= !CCS1_N &  CA[24:21]==4'b0001;	// 0x2000000 - 0x3FFFFFF)	// (A-bus CS0. Cart slot).
+logic abus_cs0		= !CCS1_N && addr_int[24:21]==4'b0001;	// 0x2000000 - 0x3FFFFFF)	// (A-bus CS0. Cart slot).
 
 // SH-2 CS2 (0x04000000-0x058FFFFF). A-bus CS1, A-bus Dummy, A-bus CS2.
-logic abus_cs1		= !CCS2_N &  CA[24]   ==1'b0;		// 0x4000000 - 0x4FFFFFF);	// (A-bus CS1. Cart slot).
-logic abus_dum		= !CCS2_N &  CA[24:23]==1'b10;		// 0x5000000 - 0x57FFFFF);	// (A-bus Dummy).
-logic abus_cs2		= !CCS2_N &  CA[24:23]==1'b11;		// 0x5800000 - 0x58FFFFF);	// (A-bus CS2. CD-Rom controller).
+logic abus_cs1		= !CCS2_N && addr_int[24]   ==1'b0;		// 0x4000000 - 0x4FFFFFF);	// (A-bus CS1. Cart slot).
+logic abus_dum		= !CCS2_N && addr_int[24:23]==1'b10;	// 0x5000000 - 0x57FFFFF);	// (A-bus Dummy).
+logic abus_cs2		= !CCS2_N && addr_int[24:23]==1'b11;	// 0x5800000 - 0x58FFFFF);	// (A-bus CS2. CD-Rom controller).
 
 // SH-2 CS2 (0x05A00000-0x05FDFFFF). B-bus.
-logic scsp_68k_cs	= !CCS2_N &  CA[24:21]==4'b1101;	// 0x5A00000 - 0x5AFFFFF);	// (B-bus SCSP 68000 Work RAM).
-logic scsp_reg_cs	= !CCS2_N &  CA[24:21]==4'b1101;	// 0x5B00000 - 0x5BFFFFF);	// (B-bus SCSP Registers).
-logic vdp1_vram_cs	= !CCS2_N &  CA[24:21]==4'b1110;	// 0x5C00000 - 0x5C7FFFF);	// (B-bus VDP1 VRAM. 512K).
-logic vdp1_fb_cs 	= !CCS2_N &  CA[24:21]==4'b1110;	// 0x5C80000 - 0x5CFFFFF);	// (B-bus VDP1 Framebuffer. 256K, mirrored every 256K).
-logic vdp1_reg_cs	= !CCS2_N &  CA[24:21]==4'b1110;	// 0x5D00000 - 0x5D7FFFF);	// (B-bus VDP1 Registers).
-logic lockup_cs		= !CCS2_N &  CA[24:21]==4'b1110;	// 0x5D80000 - 0x5DFFFFF);	// (B-bus Lockup when read!) (only added for debug.)
-logic vdp2_vram_cs	= !CCS2_N &  CA[24:21]==4'b1111;	// 0x5E00000 - 0x5EFFFFF);	// (B-bus VDP2 VRAM. 512K, mirrored every 512K).
-logic vdp2_cram_cs	= !CCS2_N &  CA[24:21]==4'b1111;	// 0x5F00000 - 0x5F7FFFF);	// (B-bus VDP2 CRAM. 4K, mirrored every 4K).
-logic vdp2_reg_cs	= !CCS2_N &  CA[24:21]==4'b1111;	// 0x5F80000 - 0x5FBFFFF);	// (B-bus VDP2 registers. 512 bytes, mirrored every 512 bytes).
-logic ret_e0000_cs  = !CCS2_N &  CA[24:18]==7'b1111111;	// 0x5FC0000 - 0x5FDFFFF);	// (Always returns $000E0000).
+logic scsp_68k_cs	= !CCS2_N && addr_int[24:21]==4'b1101;	// 0x5A00000 - 0x5AFFFFF);	// (B-bus SCSP 68000 Work RAM).
+logic scsp_reg_cs	= !CCS2_N && addr_int[24:21]==4'b1101;	// 0x5B00000 - 0x5BFFFFF);	// (B-bus SCSP Registers).
+logic vdp1_vram_cs	= !CCS2_N && addr_int[24:21]==4'b1110;	// 0x5C00000 - 0x5C7FFFF);	// (B-bus VDP1 VRAM. 512K).
+logic vdp1_fb_cs 	= !CCS2_N && addr_int[24:21]==4'b1110;	// 0x5C80000 - 0x5CFFFFF);	// (B-bus VDP1 Framebuffer. 256K, mirrored every 256K).
+logic vdp1_reg_cs	= !CCS2_N && addr_int[24:21]==4'b1110;	// 0x5D00000 - 0x5D7FFFF);	// (B-bus VDP1 Registers).
+logic lockup_cs		= !CCS2_N && addr_int[24:21]==4'b1110;	// 0x5D80000 - 0x5DFFFFF);	// (B-bus Lockup when read!) (only added for debug.)
+logic vdp2_vram_cs	= !CCS2_N && addr_int[24:21]==4'b1111;	// 0x5E00000 - 0x5EFFFFF);	// (B-bus VDP2 VRAM. 512K, mirrored every 512K).
+logic vdp2_cram_cs	= !CCS2_N && addr_int[24:21]==4'b1111;	// 0x5F00000 - 0x5F7FFFF);	// (B-bus VDP2 CRAM. 4K, mirrored every 4K).
+logic vdp2_reg_cs	= !CCS2_N && addr_int[24:21]==4'b1111;	// 0x5F80000 - 0x5FBFFFF);	// (B-bus VDP2 registers. 512 bytes, mirrored every 512 bytes).
+logic ret_e0000_cs  = !CCS2_N && addr_int[24:18]==7'b1111111;	// 0x5FC0000 - 0x5FDFFFF);	// (Always returns $000E0000).
 */
 
 // SH-2 CS2 (0x05FE0000-0x05FFFFFF).
-logic scu_reg_cs	= !CCS2_N & addr_internal[24:16]==9'b111111110;	// 0x5FE0000 - 0x5FEFFFF);	// (SCU internal reg. 256 bytes, mirrored every 256 bytes).
-//logic unk_reg_cs	= !CCS2_N & addr_internal[24:16]==9'b111111110;	// 0x5FF0000 - 0x5FFFFFF);	// (Unknown regs. 256 bytes, mirrored every 256 bytes).
+logic scu_reg_cs	= !CCS2_N && addr_int[24:16]==9'b111111110;	// 0x5FE0000 - 0x5FEFFFF);	// (SCU internal reg. 256 bytes, mirrored every 256 bytes).
+//logic unk_reg_cs	= !CCS2_N && addr_int[24:16]==9'b111111110;	// 0x5FF0000 - 0x5FFFFFF);	// (Unknown regs. 256 bytes, mirrored every 256 bytes).
 
 
 // SH-2 CS3 (0x06000000-0x07FFFFFF). Upper Work RAM SDRAM.
-logic wramh_cs		= (addr_internal>=25'h06000000 - 0x60FFFFF); // Can be accessed directly by either SH-2, or driven by the SCU during DMA.
+//logic wramh_cs		= (addr_int>=25'h06000000 && addr_int<=060FFFFF); // Can be accessed directly by either SH-2, or driven by the SCU during DMA.
+logic wramh_cs		= !CCS3_N; // Can be accessed directly by either SH-2, or driven by the SCU during DMA.
 
 
 // SH2 CS1. A-bus CS0...
-assign ACS0_N = !(!CCS1_N & addr_internal[24:21]==4'b0001);	// 0x02000000-0x03FFFFFF. A-bus CS0. Cart slot. (SH2 CS1 !)
+assign ACS0_N = !(!CCS1_N && addr_int[24:21]==4'b0001);		// 0x02000000-0x03FFFFFF. A-bus CS0. Cart slot. (SH2 CS1 !)
 
 // SH2 CS2. A-bus CS1...
-assign ACS1_N = !(!CCS2_N & addr_internal[24]   ==1'b0);	// 0x04000000-0x04FFFFFF. A-bus CS1. Cart slot. (SH2 CS2 !)
+assign ACS1_N = !(!CCS2_N && addr_int[24]   ==1'b0);		// 0x04000000-0x04FFFFFF. A-bus CS1. Cart slot. (SH2 CS2 !)
 															// 0x05000000-0x057FFFFF. A-bus dummy?
 // SH2 CS2. A-bus CS2...
-assign ACS2_N = !(!CCS2_N & addr_internal[24:23]==1'b11);	// 0x05800000-0x058FFFFF. A-bus CS2. CD-ROM controller.  (SH2 CS2 !)
+assign ACS2_N = !(!CCS2_N && addr_int[24:23]==1'b11);		// 0x05800000-0x058FFFFF. A-bus CS2. CD-ROM controller.  (SH2 CS2 !)
 
 assign ARD_N  = !( (!ACS0_N | !ACS1_N | !ACS2_N) & !CRD_N);
 
 
 // SH2 CS2. B-bus...
-assign BCSS_N = !(!CCS2_N & addr_internal[24:21]==4'b1101);	// 0x05A00000-0x05BFFFFF. (only the lower 8 bits of the B-bus connect to the SCSP. Special case?)
-assign BCS1_N = !(!CCS2_N & addr_internal[24:21]==4'b1110);	// 0x05C00000-0x05DFFFFF. (the "lockup" range likely also gets decoded).
-assign BCS2_N = !(!CCS2_N & addr_internal[24:21]==4'b1111);	// 0x05E00000-0x05FDFFFF. (the "ret_e0000" range might get decoded anyway?)
+assign BCSS_N = !(!CCS2_N && addr_int[24:21]==4'b1101);		// 0x05A00000-0x05BFFFFF. (only the lower 8 bits of the B-bus connect to the SCSP. Special case?)
+assign BCS1_N = !(!CCS2_N && addr_int[24:21]==4'b1110);		// 0x05C00000-0x05DFFFFF. (the "lockup" range likely also gets decoded).
+assign BCS2_N = !(!CCS2_N && addr_int[24:21]==4'b1111);		// 0x05E00000-0x05FDFFFF. (the "ret_e0000" range might get decoded anyway, or is it a partially floating bus?)
 
 
 // SCU reg chip selects...
-logic D0R_CS	= scu_reg_cs & addr_internal[7:2]==6'b00000000;	// 0x5FE0000.
-logic D0W_CS	= scu_reg_cs & addr_internal[7:2]==6'b00000001;	// 0x5FE0004.
-logic D0C_CS	= scu_reg_cs & addr_internal[7:2]==6'b00000010;	// 0x5FE0008.
-logic D0AD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00000011;	// 0x5FE000C.
-logic D0EN_CS	= scu_reg_cs & addr_internal[7:2]==6'b00000100;	// 0x5FE0010.
-logic D0MD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00000101;	// 0x5FE0014.
+logic D0R_CS	= scu_reg_cs && addr_int[7:2]==6'b000000;	// 0x5FE0000. DMA Level 0 Read address register.
+logic D0W_CS	= scu_reg_cs && addr_int[7:2]==6'b000001;	// 0x5FE0004. DMA Level 0 Write address register.
+logic D0C_CS	= scu_reg_cs && addr_int[7:2]==6'b000010;	// 0x5FE0008. DMA Level 0 byte Count register.
+logic D0AD_CS	= scu_reg_cs && addr_int[7:2]==6'b000011;	// 0x5FE000C. DMA Level 0 address Add value register.
+logic D0EN_CS	= scu_reg_cs && addr_int[7:2]==6'b000100;	// 0x5FE0010. DMA Level 0 DMA Enable register.
+logic D0MD_CS	= scu_reg_cs && addr_int[7:2]==6'b000101;	// 0x5FE0014. DMA Level 0 DMA Mode register.
 // 0x5FE0018-0x5FE001C unused.
-logic D1R_CS	= scu_reg_cs & addr_internal[7:2]==6'b00001000;	// 0x5FE0020.
-logic D1W_CS	= scu_reg_cs & addr_internal[7:2]==6'b00001001;	// 0x5FE0024.
-logic D1C_CS	= scu_reg_cs & addr_internal[7:2]==6'b00001010;	// 0x5FE0028.
-logic D1AD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00001011;	// 0x5FE002C.
-logic D1EN_CS	= scu_reg_cs & addr_internal[7:2]==6'b00001100;	// 0x5FE0030.
-logic D1MD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00001101;	// 0x5FE0034.
+logic D1R_CS	= scu_reg_cs && addr_int[7:2]==6'b001000;	// 0x5FE0020. DMA Level 1 Read address register.
+logic D1W_CS	= scu_reg_cs && addr_int[7:2]==6'b001001;	// 0x5FE0024. DMA Level 1 Write address register.
+logic D1C_CS	= scu_reg_cs && addr_int[7:2]==6'b001010;	// 0x5FE0028. DMA Level 1 byte Count register.
+logic D1AD_CS	= scu_reg_cs && addr_int[7:2]==6'b001011;	// 0x5FE002C. DMA Level 1 address Add value register.
+logic D1EN_CS	= scu_reg_cs && addr_int[7:2]==6'b001100;	// 0x5FE0030. DMA Level 1 DMA Enable register.
+logic D1MD_CS	= scu_reg_cs && addr_int[7:2]==6'b001101;	// 0x5FE0034. DMA Level 1 DMA Mode register.
 // 0x5FE0038-0x5FE003C unused.
-logic D2R_CS	= scu_reg_cs & addr_internal[7:2]==6'b00010000;	// 0x5FE0040.
-logic D2W_CS	= scu_reg_cs & addr_internal[7:2]==6'b00010001;	// 0x5FE0044.
-logic D2C_CS	= scu_reg_cs & addr_internal[7:2]==6'b00010010;	// 0x5FE0048.
-logic D2A0_CS	= scu_reg_cs & addr_internal[7:2]==6'b00010011;	// 0x5FE004C.
-logic D2EN_CS	= scu_reg_cs & addr_internal[7:2]==6'b00010100;	// 0x5FE0050.
-logic D2MD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00010101;	// 0x5FE0054.
+logic D2R_CS	= scu_reg_cs && addr_int[7:2]==6'b010000;	// 0x5FE0040. DMA Level 2 Read address register.
+logic D2W_CS	= scu_reg_cs && addr_int[7:2]==6'b010001;	// 0x5FE0044. DMA Level 2 Write address register.
+logic D2C_CS	= scu_reg_cs && addr_int[7:2]==6'b010010;	// 0x5FE0048. DMA Level 2 byte Count register.
+logic D2A0_CS	= scu_reg_cs && addr_int[7:2]==6'b010011;	// 0x5FE004C. DMA Level 2 address Add value register.
+logic D2EN_CS	= scu_reg_cs && addr_int[7:2]==6'b010100;	// 0x5FE0050. DMA Level 2 DMA Enable register.
+logic D2MD_CS	= scu_reg_cs && addr_int[7:2]==6'b010101;	// 0x5FE0054. DMA Level 2 DMA Mode register.
 // 0x5FE0058-0x5FE005C unused.
-logic DSTP_CS	= scu_reg_cs & addr_internal[7:2]==6'b00011000;	// 0x5FE0060.
+logic DSTP_CS	= scu_reg_cs && addr_int[7:2]==6'b011000;	// 0x5FE0060. DMA Forced Stop register.
 // 0x5FE0064-0x5FE0078 unused.
-logic DSTA_CS	= scu_reg_cs & addr_internal[7:2]==6'b00011111;	// 0x5FE007C.
-logic PPAF_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100000;	// 0x5FE0080.
-logic PPD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100001;	// 0x5FE0084.
-logic PDA_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100010;	// 0x5FE0088.
-logic PDD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100011;	// 0x5FE008C.
-logic T0C_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100100;	// 0x5FE0090.
-logic T1S_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100101;	// 0x5FE0094.
-logic T1MD_CS	= scu_reg_cs & addr_internal[7:2]==6'b00100110;	// 0x5FE0098.
+logic DSTA_CS	= scu_reg_cs && addr_int[7:2]==6'b011111;	// 0x5FE007C. DMA Status register.
+
+logic PPAF_CS	= scu_reg_cs && addr_int[7:2]==6'b100000;	// 0x5FE0080. DSP Program Control Port.
+logic PPD_CS	= scu_reg_cs && addr_int[7:2]==6'b100001;	// 0x5FE0084. DSP Program RAM Data Port.
+logic PDA_CS	= scu_reg_cs && addr_int[7:2]==6'b100010;	// 0x5FE0088. DSP Data RAM Address Port.
+logic PDD_CS	= scu_reg_cs && addr_int[7:2]==6'b100011;	// 0x5FE008C. DSP Data RAM Data Port.
+
+logic T0C_CS	= scu_reg_cs && addr_int[7:2]==6'b100100;	// 0x5FE0090. Timer 0 Compare Register.
+logic T1S_CS	= scu_reg_cs && addr_int[7:2]==6'b100101;	// 0x5FE0094. Timer 1 Set Data Register.
+logic T1MD_CS	= scu_reg_cs && addr_int[7:2]==6'b100110;	// 0x5FE0098. Timer 1 Mode Register.
 // 0x5FE009C unused.
-logic IMS_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101000;	// 0x5FE00A0.
-logic IST_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101001;	// 0x5FE00A4.
-logic AIACK_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101010;	// 0x5FE00A8.
+
+logic IMS_CS	= scu_reg_cs && addr_int[7:2]==6'b101000;	// 0x5FE00A0. Interrupt Mask register.
+logic IST_CS	= scu_reg_cs && addr_int[7:2]==6'b101001;	// 0x5FE00A4. Interrupt Status register.
+
+logic AIACK_CS	= scu_reg_cs && addr_int[7:2]==6'b101010;	// 0x5FE00A8. A-Bus Interrupt Acknowledge register.
 // 0x5FE00AC unused.
-logic ASR0_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101100;	// 0x5FE00B0.
-logic ASR1_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101101;	// 0x5FE00B4.
-logic AREF_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101110;	// 0x5FE00B8.
-logic AIAK_CS	= scu_reg_cs & addr_internal[7:2]==6'b00101111;	// 0x5FE00BC.
+logic ASR0_CS	= scu_reg_cs && addr_int[7:2]==6'b101100;	// 0x5FE00B0. A-Bus (CS0 and CS1) Set register.
+logic ASR1_CS	= scu_reg_cs && addr_int[7:2]==6'b101101;	// 0x5FE00B4. A-Bus (CS2 and Dummy) Set register.
+logic AREF_CS	= scu_reg_cs && addr_int[7:2]==6'b101110;	// 0x5FE00B8. A-Bus Refresh register.
+
+//logic AIAK_CS	= scu_reg_cs && addr_int[7:2]==6'b101111;	// 0x5FE00BC. NOTE: Probable mistake in SCU User Manual page 161 (PDF page 177)? Reg is marked as "Free" in sega_scu.cpp in MAME.
 // 0x5FE00C0 unused.
-logic RSEL_CS	= scu_reg_cs & addr_internal[7:2]==6'b00110001;	// 0x5FE00C4.
-logic VER_CS	= scu_reg_cs & addr_internal[7:2]==6'b00110010;	// 0x5FE00C8.
+
+logic RSEL_CS	= scu_reg_cs && addr_int[7:2]==6'b110001;	// 0x5FE00C4. SCU SDRAM Select Bit.
+logic VER_CS	= scu_reg_cs && addr_int[7:2]==6'b110010;	// 0x5FE00C8. SCU Version register.
 // 0x5FE00CC unused.
 
 
@@ -418,9 +425,6 @@ logic [31:0] ASR1;	// 0x5FE00B4. A-Bus CS2 and Dummy.
 logic [31:0] AREF;	// 0x5FE00B8.
 
 
-logic [31:0] AIAK;	// 0x5FE00BC.	???
-
-
 // 0x25FE00C4 = SCU SDRAM Select Register.
 // [0]. Work-SDRAM select bit. 0=2Mbit x2. 1=4Mbit x2.
 logic [31:0] RSEL;	// 0x5FE00C4.
@@ -428,7 +432,7 @@ logic [31:0] RSEL;	// 0x5FE00C4.
 
 // 0x25FE00C8 = SCU Version Register.
 // [3:0] = Version number.
-logic [31:0] VER = {28'b0000000, 4'd1};	// 0x5FE00C8.
+logic [31:0] VER = {28'b0000000, 4'd4};	// 0x5FE00C8. Return a value of 4. (from MAME sega_scu.cpp source).
 
 
-
+endmodule
